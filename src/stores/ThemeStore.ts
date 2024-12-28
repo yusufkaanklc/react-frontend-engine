@@ -18,7 +18,7 @@ const getInitialTheme = (): ITheme => {
 		typeof window.matchMedia === "function" ? window.matchMedia("(prefers-color-scheme: dark)").matches : "dark";
 	const savedTheme = localStorage.getItem(storageTypes.THEME_STORAGE);
 
-	if (savedTheme && themeTypes.includes(savedTheme)) {
+	if (savedTheme && (themeTypes.DARK === savedTheme || themeTypes.LIGHT === savedTheme)) {
 		return savedTheme as ITheme;
 	}
 
@@ -36,7 +36,7 @@ export const useThemeStore = create<IThemeStore>((set) => ({
 
 	toggleTheme: () =>
 		set((state) => {
-			const newTheme = state.theme === "light" ? "dark" : "light";
+			const newTheme = state.theme === themeTypes.LIGHT ? themeTypes.DARK : themeTypes.LIGHT;
 			changeAttribute(newTheme);
 			localStorage.setItem(storageTypes.THEME_STORAGE, newTheme);
 			return { theme: newTheme };

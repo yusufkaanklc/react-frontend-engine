@@ -9,6 +9,7 @@ export interface IDropdownStyle {
 }
 
 export interface IDropdown {
+	selectedMenu?: string;
 	children?: ReactNode;
 	isOpen?: boolean;
 	closeToClickOutside?: boolean;

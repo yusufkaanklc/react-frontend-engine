@@ -3,6 +3,6 @@ import type { HTMLAttributes, ReactNode } from "react";
 
 export interface IDropdownItem extends HTMLAttributes<HTMLDivElement> {
 	children: ReactNode;
-	isActivated?: boolean;
+	isSelectedMenu?: boolean;
 	styleClass?: ICustomStylesConfig;
 }
