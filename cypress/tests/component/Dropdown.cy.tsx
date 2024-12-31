@@ -51,7 +51,7 @@ const defaultDropdownTriggerStyles: CSSProperties = {
 	color: getCSSVariableValue(color.primary),
 	borderRadius: `${remToPx(0.5)}px`,
 	cursor: "pointer",
-	border: `0.8px solid ${getCSSVariableValue(custom.divider)}`,
+	border: `1px solid ${getCSSVariableValue(custom.divider)}`,
 	backgroundColor: getCSSVariableValue(paper.card),
 	padding: `${remToPx(0.25)}px ${remToPx(0.5)}px`,
 };
@@ -59,8 +59,8 @@ const defaultDropdownTriggerStyles: CSSProperties = {
 const defaultDropdownMenuStyles: CSSProperties = {
 	backgroundColor: getCSSVariableValue(paper.card),
 	position: "absolute",
-	borderTopWidth: "0.8px",
-	borderBottomWidth: "0.8px",
+	borderTopWidth: "1px",
+	borderBottomWidth: "1px",
 	overflow: "hidden",
 	borderRadius: `${remToPx(0.5)}px`,
 	borderColor: getCSSVariableValue(custom.divider),

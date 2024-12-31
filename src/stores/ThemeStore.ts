@@ -25,6 +25,11 @@ const getInitialTheme = (): ITheme => {
 	return prefersDarkScheme ? "dark" : "light";
 };
 
+const setThemeData = (theme: ITheme) => {
+	changeAttribute(theme);
+	localStorage.setItem(storageTypes.THEME_STORAGE, theme);
+};
+
 export const useThemeStore = create<IThemeStore>((set) => ({
 	theme: getInitialTheme(),
 
@@ -34,11 +39,15 @@ export const useThemeStore = create<IThemeStore>((set) => ({
 		set({ theme: initialTheme });
 	},
 
+	setTheme: (theme: ITheme) => {
+		set({ theme });
+		setThemeData(theme);
+	},
+
 	toggleTheme: () =>
 		set((state) => {
 			const newTheme = state.theme === themeTypes.LIGHT ? themeTypes.DARK : themeTypes.LIGHT;
-			changeAttribute(newTheme);
-			localStorage.setItem(storageTypes.THEME_STORAGE, newTheme);
+			setThemeData(newTheme);
 			return { theme: newTheme };
 		}),
 }));

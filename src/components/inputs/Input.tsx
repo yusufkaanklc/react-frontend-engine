@@ -8,18 +8,18 @@ import { type FC, useState } from "react";
 // Input componenti tanımlanır.
 // Kullanıcıdan gelen çeşitli özellikleri destekler ve bu özelliklere göre farklı stiller uygular.
 export const Input: FC<IInput> = ({
-	type,
+	type = "text",
 	onClick,
 	isInvalid = false,
 	onChange,
 	onBlur,
-	placeholder,
+	placeholder = "",
 	id,
 	value,
 	name,
 	icon,
 	customSize = "md", // Varsayılan boyut "md" olarak ayarlanmıştır.
-	className,
+	className = "",
 	...props
 }) => {
 	const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);

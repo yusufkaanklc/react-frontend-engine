@@ -36,7 +36,7 @@ export const LanguageChanger = () => {
 	if (!selectedLanguage) return null;
 
 	return (
-		<Dropdown styleClass={dropdownStyleConfig} position="bottom-left">
+		<Dropdown selectedMenu={selectedLanguage.slug} styleClass={dropdownStyleConfig} position="bottom-left">
 			<DropdownTrigger>
 				<IconBox>
 					{typeof selectedLanguage.flag === "string" ? (
@@ -50,7 +50,8 @@ export const LanguageChanger = () => {
 
 			{languages?.map((lang, index) => (
 				<DropdownItem
-					isActivated={lang.slug === selectedLanguage?.slug}
+					id={lang.slug}
+					isSelectedMenu={lang.slug === selectedLanguage?.slug}
 					key={index.toString()}
 					data-activated={lang.slug === selectedLanguage?.slug}
 					onClick={() => handleLanguageClick(lang.slug)}

@@ -8,10 +8,12 @@ import { FormControl } from "@/components/form/FormControl";
 import { FormPicker } from "@/components/form/FormPicker.tsx";
 import type { IFormButton, IFormCreator, IFormField } from "@/interfaces/components/form/IFormCreator.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { Controller, type DefaultValues, type FieldValues, type Path, useForm } from "react-hook-form";
 
 export const FormCreator = <T extends FieldValues>({
 	fields,
+	onChange,
 	onSubmit,
 	validationSchema,
 	icon,
@@ -61,6 +63,7 @@ export const FormCreator = <T extends FieldValues>({
 		handleSubmit,
 		reset,
 		formState: { errors },
+		watch,
 	} = useForm<T>({
 		defaultValues: initialValues ?? getInitialValues,
 		resolver: zodResolver(validationSchema),
@@ -75,13 +78,19 @@ export const FormCreator = <T extends FieldValues>({
 		button.action?.();
 	};
 
+	const watchFields = watch();
+
+	useEffect(() => {
+		onChange?.(watchFields);
+	}, [watchFields]);
+
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} noValidate>
-			<Card data-testid={"form-creator"} size={size} className={className} styleClass={cardStyles}>
+			<Card size={size} className={className} styleClass={cardStyles}>
 				{(header || icon) && (
-					<CardHeader data-testid={"form-header-section"} className="flex items-center gap-3">
+					<CardHeader className="flex items-center gap-3">
 						{icon && (
-							<IconBox data-testid={"form-icon"} className={"shadow-2 p-2"} radius="full">
+							<IconBox className={"shadow-2 p-2"} radius="full">
 								{icon}
 							</IconBox>
 						)}
@@ -98,7 +107,7 @@ export const FormCreator = <T extends FieldValues>({
 						// Handling combined fields with children
 						if ("children" in field && field.combined && field.children) {
 							return (
-								<div key={fieldKey} data-testid={"combined-fields"} className="flex-col sm:flex-row flex items-start gap-5">
+								<div key={fieldKey} data-testid={"combined-field"} className="flex-col sm:flex-row flex items-start gap-5">
 									{Object.entries(field.children).map(([childKey, childField]) => (
 										<Controller
 											key={childKey}

@@ -53,6 +53,7 @@ export interface IFormButton {
 export type IFormFields = Record<string, IFormField>;
 
 export interface IFormCreator<T> {
+	onChange?: (data: T) => void;
 	size?: ISize | "full";
 	fields: IFormFields;
 	onSubmit: (data: T) => Promise<void> | void;
