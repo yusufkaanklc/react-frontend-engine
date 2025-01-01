@@ -28,23 +28,25 @@ export const UserMenu = ({ data }: { data: IUserMenuData }) => {
 	};
 
 	return (
-		<Dropdown size={"lg"} styleClass={dropdownStyleConfig} position={"bottom-left"}>
-			<DropdownTrigger>
-				<Avatar className={"hidden md:block"} image={data.avatar ?? "/media/man2.webp"} alt={"user"} />
-			</DropdownTrigger>
-			<DropdownItem styleClass={{ defaultStyleActive: false, customStyle: "p-3" }}>
-				<h4 className={"text-h4"}>{data.username}</h4>
-				<p className={"text-subtitle2"}>{data.email}</p>
-			</DropdownItem>
-			{data.menus.length > 0 &&
-				data.menus.map((menu, index) => (
-					<DropdownItem key={index.toString()}>
-						<div onKeyDown={() => {}} onClick={() => handleMenuClick(menu.action)} className={"flex items-center gap-4"}>
-							<IconBox>{menu.icon}</IconBox>
-							<p>{menu.text}</p>
-						</div>
-					</DropdownItem>
-				))}
-		</Dropdown>
+		<div data-testid={"user-menu"} className={"hidden md:block"}>
+			<Dropdown size={"lg"} styleClass={dropdownStyleConfig} position={"bottom-left"}>
+				<DropdownTrigger>
+					<Avatar image={data.avatar ?? "/media/man2.webp"} alt={"user"} />
+				</DropdownTrigger>
+				<DropdownItem styleClass={{ defaultStyleActive: false, customStyle: "p-3" }}>
+					<h4 className={"text-h4"}>{data.username}</h4>
+					<p className={"text-subtitle2"}>{data.email}</p>
+				</DropdownItem>
+				{data.menus.length > 0 &&
+					data.menus.map((menu, index) => (
+						<DropdownItem key={index.toString()}>
+							<div onKeyDown={() => {}} onClick={() => handleMenuClick(menu.action)} className={"flex items-center gap-4"}>
+								<IconBox>{menu.icon}</IconBox>
+								<p>{menu.text}</p>
+							</div>
+						</DropdownItem>
+					))}
+			</Dropdown>
+		</div>
 	);
 };

@@ -36,30 +36,32 @@ export const LanguageChanger = () => {
 	if (!selectedLanguage) return null;
 
 	return (
-		<Dropdown selectedMenu={selectedLanguage.slug} styleClass={dropdownStyleConfig} position="bottom-left">
-			<DropdownTrigger>
-				<IconBox>
-					{typeof selectedLanguage.flag === "string" ? (
-						<img alt={selectedLanguage.name} src={selectedLanguage.flag} />
-					) : (
-						selectedLanguage.flag
-					)}
-				</IconBox>
-				<p>{selectedLanguage.name}</p>
-			</DropdownTrigger>
+		<div data-testid={"language-changer"}>
+			<Dropdown selectedMenu={selectedLanguage.slug} styleClass={dropdownStyleConfig} position="bottom-left">
+				<DropdownTrigger>
+					<IconBox>
+						{typeof selectedLanguage.flag === "string" ? (
+							<img alt={selectedLanguage.name} src={selectedLanguage.flag} />
+						) : (
+							selectedLanguage.flag
+						)}
+					</IconBox>
+					<p>{selectedLanguage.name}</p>
+				</DropdownTrigger>
 
-			{languages?.map((lang, index) => (
-				<DropdownItem
-					id={lang.slug}
-					isSelectedMenu={lang.slug === selectedLanguage?.slug}
-					key={index.toString()}
-					data-activated={lang.slug === selectedLanguage?.slug}
-					onClick={() => handleLanguageClick(lang.slug)}
-				>
-					<IconBox>{typeof lang.flag === "string" ? <img alt={lang.name} src={lang.flag} /> : lang.flag}</IconBox>
-					<p>{lang.name}</p>
-				</DropdownItem>
-			))}
-		</Dropdown>
+				{languages?.map((lang, index) => (
+					<DropdownItem
+						id={lang.slug}
+						isSelectedMenu={lang.slug === selectedLanguage?.slug}
+						key={index.toString()}
+						data-activated={lang.slug === selectedLanguage?.slug}
+						onClick={() => handleLanguageClick(lang.slug)}
+					>
+						<IconBox>{typeof lang.flag === "string" ? <img alt={lang.name} src={lang.flag} /> : lang.flag}</IconBox>
+						<p>{lang.name}</p>
+					</DropdownItem>
+				))}
+			</Dropdown>
+		</div>
 	);
 };

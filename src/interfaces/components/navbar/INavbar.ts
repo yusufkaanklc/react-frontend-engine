@@ -2,7 +2,7 @@ import type { IUserMenuData } from "@/interfaces/components/navbar/IUserMenuData
 import type { ReactNode } from "react";
 
 export interface INavbar {
-	userMenus?: IUserMenuData;
+	userMenuData?: IUserMenuData;
 	notifications?: any; //Todo bildirimler veri tipi ayarlanacak
 	isThemeSwitcherActive?: boolean;
 	extraComponents?: ReactNode[];
