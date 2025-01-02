@@ -34,7 +34,7 @@
    "include": [
       "src", 
       "cypress",
-     
+      "cypress-real-events"
     ],
    "exclude": [
       "src/test",

@@ -56,7 +56,6 @@ export const SidebarItem = ({ isActivated = false, menu, isChild = false }: ISid
 			>
 				{menu.icon && (
 					<IconBox
-						data-testid={"sidebar-item-icon"}
 						data-activated={isActivated}
 						color={"text-sidebar-item-color"}
 						className={"data-[activated='true']:text-sidebar-item-active-color hover:text-sidebar-item-active-color"}

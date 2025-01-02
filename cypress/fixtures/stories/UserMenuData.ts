@@ -1,6 +1,5 @@
+import type { IUserMenuData } from "@/interfaces/components/navbar/INavbar";
 import { icons } from "@/plugins/Icons";
-
-import type { IUserMenuData } from "@/interfaces/components/navbar/IUserMenuData.ts";
 
 export const userMenuData: IUserMenuData = {
 	username: "John Doe",

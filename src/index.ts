@@ -40,7 +40,7 @@ export type { IDropdownStyle } from "@/interfaces/components/dropdown/IDropdown"
 export type { IFormButton, IFormField, IFormFields } from "@/interfaces/components/form/IFormCreator.ts";
 export type { ITabItem } from "@/interfaces/components/ITab";
 export type { ITableCellRendererParams, ITableColumn, ITableOptions, ITableRow } from "@/interfaces/components/ITable";
-export type { IUserMenuData } from "@/interfaces/components/navbar/IUserMenuData.ts";
+export type { IUserMenuData } from "@/interfaces/components/navbar/INavbar.ts";
 export type { ISidebarMenu } from "@/interfaces/components/sidebar/ISidebarMenu.ts";
 export type { ILanguage } from "@/interfaces/ILanguage";
 export type { ICustomRouteObject } from "@/interfaces/plugins/ICustomRouteObject";

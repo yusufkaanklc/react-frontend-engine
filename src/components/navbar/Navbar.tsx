@@ -2,7 +2,7 @@ import { IconBox } from "@/components/IconBox";
 import { Input } from "@/components/inputs/Input";
 import { LanguageChanger } from "@/components/navbar/LanguageChanger";
 import { Notifications } from "@/components/navbar/Notifications.tsx";
-import { UserMenu } from "@/components/navbar/UserMenu.tsx";
+import { UserMenu } from "@/components/navbar/UserMenu";
 import type { INavbar } from "@/interfaces/components/navbar/INavbar.ts";
 import { icons } from "@/plugins/Icons.tsx";
 import { useLanguageStore } from "@/stores/LanguageStore.ts";
@@ -34,8 +34,13 @@ export const Navbar = ({ extraComponents, isThemeSwitcherActive = true, userMenu
 				"bg-sidebar-default": currentTheme === "dark",
 			})}
 		>
-			<div onClick={handleMobileMenuTriggerClick} onKeyDown={() => {}} data-testid={"mobile-menu-trigger"}>
-				<IconBox isHoverable color={"color-primary"} className={"block md:hidden"}>
+			<div
+				onClick={handleMobileMenuTriggerClick}
+				onKeyDown={() => {}}
+				data-testid={"mobile-menu-trigger"}
+				className={"block md:hidden"}
+			>
+				<IconBox isHoverable color={"color-primary"}>
 					{icons.outline.bars_3}
 				</IconBox>
 			</div>

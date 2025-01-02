@@ -1,6 +1,6 @@
 import { userMenuData } from "#/cypress/fixtures/stories/UserMenuData";
 import { UserMenu } from "@/components/navbar/UserMenu";
-import type { IUserMenuData } from "@/interfaces/components/navbar/IUserMenuData";
+import type { IUserMenuData } from "@/interfaces/components/navbar/INavbar";
 
 // Test setup fonksiyonu, UserMenu bileşenini mount etmek için kullanılır.
 const setup = (data: IUserMenuData) => {
@@ -12,11 +12,6 @@ const setup = (data: IUserMenuData) => {
 };
 
 describe("UserMenu", () => {
-	beforeEach(() => {
-		// Testler başlamadan önce her seferinde ekran boyutunu ayarlıyoruz.
-		cy.viewport(1280, 720);
-	});
-
 	context("Rendering", () => {
 		it("doğru şekilde render ediyor", () => {
 			setup(userMenuData);

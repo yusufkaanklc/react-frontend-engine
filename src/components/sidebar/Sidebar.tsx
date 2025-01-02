@@ -76,6 +76,7 @@ export const Sidebar = ({ logo, collapsedLogo, menus }: ISidebar) => {
 		setHasRendered(true);
 	}, []);
 
+	// todo: onKeyDown
 	return (
 		<div
 			data-testid={"sidebar"}

@@ -5,8 +5,7 @@ import { Dropdown } from "@/components/dropdown/Dropdown";
 import { DropdownItem } from "@/components/dropdown/DropdownItem";
 import { DropdownTrigger } from "@/components/dropdown/DropdownTrigger";
 import type { IDropdownStyle } from "@/interfaces/components/dropdown/IDropdown.ts";
-import type { IUserMenu } from "@/interfaces/components/navbar/IUserMenu.ts";
-import type { IUserMenuData } from "@/interfaces/components/navbar/IUserMenuData.ts";
+import type { IUserMenu, IUserMenuData } from "@/interfaces/components/navbar/INavbar";
 
 export const UserMenu = ({ data }: { data: IUserMenuData }) => {
 	const dropdownStyleConfig: IDropdownStyle = {
@@ -28,7 +27,7 @@ export const UserMenu = ({ data }: { data: IUserMenuData }) => {
 	};
 
 	return (
-		<div data-testid={"user-menu"} className={"hidden md:block"}>
+		<div data-testid={"user-menu"}>
 			<Dropdown size={"lg"} styleClass={dropdownStyleConfig} position={"bottom-left"}>
 				<DropdownTrigger>
 					<Avatar image={data.avatar ?? "/media/man2.webp"} alt={"user"} />

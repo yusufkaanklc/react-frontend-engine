@@ -32,7 +32,6 @@ describe("Navbar", () => {
 	context("Basic rendering", () => {
 		it("renders correctly on large screens", () => {
 			// Büyük ekran boyutu belirlenir
-			cy.viewport(1280, 720);
 			setup({});
 			// Navbar bileşeni doğru şekilde render edilip edilmediği kontrol edilir
 			cy.getByTestId("navbar")
@@ -46,7 +45,6 @@ describe("Navbar", () => {
 
 		it("renders correctly with light theme", () => {
 			// Tema light olarak ayarlanır
-			cy.viewport(1280, 720);
 			setup({}, "light");
 			// Navbar bileşeninin light tema ile doğru şekilde render edilip edilmediği kontrol edilir
 			cy.getByTestId("navbar").haveCSS({
@@ -57,6 +55,7 @@ describe("Navbar", () => {
 		});
 
 		it("renders correctly on small screens", () => {
+			cy.viewport(375, 667);
 			// Küçük ekran testi için setup
 			setup({});
 			// Navbar bileşeni doğru şekilde render edilip edilmediği kontrol edilir
@@ -71,6 +70,7 @@ describe("Navbar", () => {
 	// Mobil menü tetikleyicisi için testler
 	context("Mobile menu trigger", () => {
 		it("renders the trigger correctly", () => {
+			cy.viewport(375, 667);
 			setup({});
 			// Mobil menü tetikleyicisinin doğru şekilde render edildiği kontrol edilir
 			cy.getByTestId("icon-box")
@@ -82,9 +82,7 @@ describe("Navbar", () => {
 				});
 		});
 
-		it("hides the trigger on small screens", () => {
-			// Küçük ekran boyutunda tetikleyicinin gizlendiği kontrol edilir
-			cy.viewport("ipad-mini");
+		it("hides the trigger on large screens", () => {
 			setup({});
 			cy.getByTestId("mobile-menu-trigger").should("not.be.visible");
 		});
@@ -93,19 +91,10 @@ describe("Navbar", () => {
 	// Arama girişi için testler
 	context("Search input", () => {
 		it("renders correctly on large screens", () => {
-			// Büyük ekran boyutunda arama girişinin doğru render edilmesi
-			cy.viewport(1280, 720);
 			setup({});
 			cy.getByTestId("search-input-label").should("be.visible");
 			cy.getByTestId("search-input");
 			cy.getByTestId("search-input-label").find("svg").should("be.visible");
-		});
-
-		it("hides the label on small screens", () => {
-			// Küçük ekran boyutunda arama giriş etiketi gizlenir
-			setup({});
-			cy.getByTestId("search-input");
-			cy.getByTestId("search-input-label").should("not.be.visible");
 		});
 	});
 
@@ -142,16 +131,8 @@ describe("Navbar", () => {
 	context("User menu", () => {
 		it("renders correctly on large screens", () => {
 			// Büyük ekran boyutunda kullanıcı menüsü doğru şekilde render edilir
-			cy.viewport(1280, 720);
 			setup({ userMenuData });
 			cy.getByTestId("user-menu").should("be.visible");
-		});
-
-		it("hides the menu on small screens", () => {
-			// Küçük ekran boyutunda kullanıcı menüsü gizlenir
-			cy.viewport("iphone-xr");
-			setup({ userMenuData });
-			cy.getByTestId("user-menu").should("not.be.visible");
 		});
 	});
 

@@ -52,7 +52,7 @@ export const SidebarMenus = ({
 						{/* Sidebar açıldığında, etiketin görünmesini sağlıyoruz */}
 						{!sidebarCollapsed.status || (!isMdScreen && sidebarCollapsed.status) ? (
 							<motion.div
-								data-testid={"isLabel-menu"}
+								data-testid={"label-menu"}
 								initial={{ opacity: 0, height: 0 }}
 								animate={{ opacity: 1, height: "auto" }}
 								exit={{ opacity: 0, height: 0 }}
@@ -79,11 +79,11 @@ export const SidebarMenus = ({
 						data-activated={isActivatedMenuItem(menu)}
 						data-testid={"dropdown-menu-trigger"}
 						className={classNames(
+							"flex cursor-pointer items-center rounded-lg mb-1 mt-1 px-2 py-2.5",
 							"data-[activated='true']:bg-primary-main",
 							"data-[activated='true']:text-sidebar-item-active-color",
 							"data-[activated='false']:text-sidebar-item-color",
 							"data-[activated='false']:hover:text-sidebar-item-active-color",
-							"flex cursor-pointer items-center rounded-lg mb-1 mt-1 px-2 py-2.5",
 							"justify-between hover:bg-sidebar-item-hover",
 						)}
 					>
@@ -91,7 +91,6 @@ export const SidebarMenus = ({
 						<div className="flex items-center overflow-hidden">
 							{menu.icon && (
 								<IconBox
-									data-testid={"dropdown-menu-trigger-icon"}
 									color={"text-sidebar-item-color"}
 									className={"transition-all duration-300 hover:text-sidebar-item-active-color"}
 								>
@@ -142,13 +141,9 @@ export const SidebarMenus = ({
 		// Eğer menüde icon varsa, SidebarItem bileşeni ile gösteriyoruz
 		if ("icon" in menu && menu.icon) {
 			return (
-				<SidebarItem
-					data-test-id={"menu"}
-					key={index.toString()}
-					isActivated={isActivatedMenuItem(menu)}
-					isChild={false}
-					menu={menu}
-				/>
+				<div data-testid="menu" key={index.toString()}>
+					<SidebarItem isActivated={isActivatedMenuItem(menu)} isChild={false} menu={menu} />
+				</div>
 			);
 		}
 

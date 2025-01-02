@@ -1,10 +1,12 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
-  component: {
-    devServer: {
-      framework: "react",
-      bundler: "vite",
-    },
-  },
+	component: {
+		viewportWidth: 1280,
+		viewportHeight: 720,
+		devServer: {
+			framework: "react",
+			bundler: "vite",
+		},
+	},
 });
