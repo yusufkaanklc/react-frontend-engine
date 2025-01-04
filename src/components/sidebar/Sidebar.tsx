@@ -5,12 +5,15 @@ import { useUIStore } from "@/stores/UIStore.ts";
 import { mediaQueryUtil } from "@/utils/MediaQueryUtil";
 import classNames from "classnames";
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const Sidebar = ({ logo, collapsedLogo, menus }: ISidebar) => {
 	const setSidebarCollapsed = useUIStore((state) => state.setSidebarCollapsed);
 	const sidebarCollapsed = useUIStore((state) => state.sidebarCollapsed);
 	const [isMdScreen, setIsMdScreen] = useState<boolean>(true);
 	const [hasRendered, setHasRendered] = useState<boolean>(false);
+
+	const { t } = useTranslation();
 
 	/**
 	 * Sidebar'ın daraltılmış ya da genişletilmiş durumu arasında geçiş yapar.
@@ -76,6 +79,7 @@ export const Sidebar = ({ logo, collapsedLogo, menus }: ISidebar) => {
 		setHasRendered(true);
 	}, []);
 
+	// todo: onKeyDown
 	return (
 		<div
 			data-testid={"sidebar"}
@@ -99,6 +103,8 @@ export const Sidebar = ({ logo, collapsedLogo, menus }: ISidebar) => {
 
 				{!sidebarCollapsed.status && (
 					<div
+						data-tooltip-id={"global-tooltip"}
+						data-tooltip-content={t("theme.sidebar.collapsed_tooltip")}
 						data-testid={"sidebar-collapsed-trigger"}
 						onKeyDown={() => {}}
 						className={"size-5 text-sidebar-item-active-color cursor-pointer"}

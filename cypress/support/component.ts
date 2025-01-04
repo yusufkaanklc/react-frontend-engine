@@ -1,4 +1,4 @@
-import { languageConfigs } from "#/cypress/fixtures/mocks/LanguageTranslations";
+import { languageConfigs } from "#/cypress/fixtures/stories/LanguageTranslations";
 import { initI18n } from "@/plugins/I18N";
 import { useThemeStore } from "@/stores/ThemeStore";
 import "@/styles/theme.css";

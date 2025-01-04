@@ -5,7 +5,7 @@ export const languageConfigs: ILanguage[] = [
 	{
 		slug: "tr",
 		name: "Türkçe",
-		flag: "../flags/turkey-flag-icon.png",
+		flag: "./cypress/fixtures/flags/turkey-flag-icon.png",
 		is_default: true,
 		is_fallback: true,
 		translations: trTranslations,
@@ -13,7 +13,7 @@ export const languageConfigs: ILanguage[] = [
 	{
 		slug: "en",
 		name: "English",
-		flag: "../flags/united-kingdom-flag-icon.png",
+		flag: "./cypress/fixtures/flags/united-kingdom-flag-icon.png",
 		is_default: false,
 		is_fallback: false,
 		translations: enTranslations,

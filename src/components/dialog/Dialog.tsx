@@ -1,6 +1,7 @@
 import { DialogAction } from "@/components/dialog/DialogAction";
 import { DialogBody } from "@/components/dialog/DialogBody";
 import { DialogHeader } from "@/components/dialog/DialogHeader";
+import { dialogTypes } from "@/enums/Theme";
 import type { IDialog } from "@/interfaces/components/dialog/IDialog.ts";
 import type { ICustomStylesConfig } from "@/interfaces/types/ICustomStyleConfig";
 import type { ISize } from "@/interfaces/types/IMetrics.ts";
@@ -44,13 +45,14 @@ export const Dialog = ({
 	onOpened,
 	onClosed,
 	className = "",
-	type = "modal",
+	type = dialogTypes.MODAL,
 	styleClass,
 	children,
 }: IDialog): JSX.Element | null => {
 	const [status, setStatus] = useState<boolean>(isOpen ?? false);
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const [zIndex, setZIndex] = useState<number>(100);
+	const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
 	const [isMdScreen, setIsMdScreen] = useState<boolean>(true);
 
 	const dialogRef = useRef<HTMLDivElement>(null); // dialog elemanını referansla alıyoruz
@@ -68,8 +70,8 @@ export const Dialog = ({
 		"2xl": "w-full max-w-2xl",
 	};
 
-	const isModal = type === "modal";
-	const isNotModal = type !== "modal";
+	const isModal = type === dialogTypes.MODAL;
+	const isNotModal = type === dialogTypes.DRAWER;
 
 	const dialogStyle = classNames(
 		{
@@ -129,6 +131,9 @@ export const Dialog = ({
 	}, [isOpen]);
 
 	useEffect(() => {
+		if (isFirstRender) {
+			return setIsFirstRender(false);
+		}
 		if (status) {
 			return onOpened?.();
 		}
@@ -251,7 +256,7 @@ export const Dialog = ({
 		};
 	}, []);
 
-	if (type !== "drawer" && type !== "modal") return null;
+	if (type !== dialogTypes.DRAWER && type !== dialogTypes.MODAL) return null;
 
 	return (
 		<>
@@ -297,11 +302,11 @@ export const Dialog = ({
 											const customStyle = () => {
 												switch (child.type) {
 													case DialogHeader:
-														return styleClass?.dialogHeader;
+														return styleClass?.header;
 													case DialogBody:
-														return styleClass?.dialogBody;
+														return styleClass?.body;
 													case DialogAction:
-														return styleClass?.dialogAction;
+														return styleClass?.action;
 													default:
 														return undefined;
 												}

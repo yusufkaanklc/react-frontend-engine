@@ -17,7 +17,7 @@ export const Avatar = ({ image, size = "md", alt = "Avatar", rounded = "full", c
 
 	return (
 		<div
-			data-testid={"avatar-container"}
+			data-testid={"avatar"}
 			{...props}
 			className={classNames(
 				"overflow-hidden",

@@ -77,7 +77,7 @@ describe("Dropzone Component", () => {
 	it("Should correctly rendered and applied styles to Dropzone Icon", () => {
 		cy.mount(<Dropzone />);
 		cy.wait(100);
-		const dropzoneIcon = cy.getByTestId("icon-box-container");
+		const dropzoneIcon = cy.getByTestId("icon-box");
 		dropzoneIcon.should("be.visible");
 		dropzoneIcon.haveCSS({
 			color: "rgb(240, 244, 248)",

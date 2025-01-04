@@ -10,10 +10,7 @@ import type { JSX } from "react";
  *
  * @param {IRadioBox} props - Radiobox bileşeni için gereken tüm özellikler.
  * @param {string} [props.color="primary-main"] - Radiobox seçili durumunda uygulanacak renk (Tailwind renk sınıfları ile uyumlu).
- * @param checked
  * @param {string} props.name - Radiobox'un `name` özelliği (aynı gruptaki radioboxlar için aynı olmalıdır).
- * @param readOnly
- * @param onChange
  * @param {ISize} [props.size="md"] - Radiobox boyutu (`sm`, `md`, `lg`, `xl`, `2xl`).
  * @param {string} [props.className] - Ekstra Tailwind sınıfları eklemek için kullanılır.
  * @param {React.InputHTMLAttributes<HTMLInputElement>} props - HTML input elementine ait diğer özellikler.
@@ -21,16 +18,7 @@ import type { JSX } from "react";
  * @returns {JSX.Element} Özelleştirilmiş bir radiobox bileşeni.
  */
 
-export const Radiobox = ({
-	color = "primary-main",
-	checked = false,
-	name,
-	readOnly,
-	onChange,
-	size = "md",
-	className,
-	...props
-}: IRadioBox): JSX.Element => {
+export const Radiobox = ({ color = "primary-main", onChange, size = "md", className, ...props }: IRadioBox): JSX.Element => {
 	const sizeSchema: Record<ISize, string> = {
 		sm: "w-4 h-4",
 		md: "w-5 h-5",
@@ -42,9 +30,6 @@ export const Radiobox = ({
 		<input
 			data-testid={"radiobox"}
 			type="radio"
-			name={name}
-			checked={checked}
-			readOnly={readOnly}
 			onChange={onChange}
 			{...props}
 			className={classNames(

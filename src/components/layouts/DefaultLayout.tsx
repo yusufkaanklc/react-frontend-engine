@@ -24,11 +24,11 @@ export const DefaultLayout = ({ sidebar, navbar }: IDefaultLayout): JSX.Element 
 				data-testid={"sidebar-section"}
 				data-sidebar-collapsed={sidebarCollapsed.status}
 				className={classNames(
-					"fixed top-0 overflow-hidden left-0 z-60 h-full duration-300 transition-all",
+					"fixed top-0 overflow-hidden left-0 z-60 h-full w-screen duration-300 transition-all",
 					"data-[sidebar-collapsed='true']:-translate-x-full",
 					"data-[sidebar-collapsed='true']:md:translate-x-0",
 					"data-[sidebar-collapsed='false']:md:translate-x-0",
-					"w-screen data-[sidebar-collapsed='true']:md:w-[4.5rem]",
+					"data-[sidebar-collapsed='true']:md:w-[4.5rem]",
 					"data-[sidebar-collapsed='false']:md:w-72",
 				)}
 			>

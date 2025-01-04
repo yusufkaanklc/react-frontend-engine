@@ -1,6 +1,7 @@
 import { DropdownItem } from "@/components/dropdown/DropdownItem";
 import { DropdownTrigger } from "@/components/dropdown/DropdownTrigger";
 import type { IDropdown } from "@/interfaces/components/dropdown/IDropdown.ts";
+import type { IDropdownItem } from "@/interfaces/components/dropdown/IDropdownItem";
 import type { ICustomStylesConfig } from "@/interfaces/types/ICustomStyleConfig";
 import type { IPosition, ISize } from "@/interfaces/types/IMetrics.ts";
 import { useThemeStore } from "@/stores/ThemeStore.ts";
@@ -37,12 +38,14 @@ export const Dropdown = ({
 	isOpen = false,
 	closeToClickOutside = true,
 	closeToClickInside = true,
+	selectedMenu,
 	styleClass,
 	children,
 	size = "md",
 	position = "bottom-right",
 }: IDropdown) => {
 	const [internalIsOpen, setInternalIsOpen] = useState(isOpen);
+	const [internalSelectedMenu, setInternalSelectedMenu] = useState<string>(selectedMenu ?? "");
 	const dropdownRef = useRef<HTMLDivElement>(null);
 	const triggerRef = useRef<HTMLDivElement>(null);
 	const theme = useThemeStore((state) => state.theme);
@@ -72,6 +75,12 @@ export const Dropdown = ({
 		},
 		[closeToClickOutside, closeToClickInside, internalIsOpen],
 	);
+
+	// Menu seçme olayını yönetir
+	const handleSelectMenu = (id?: string) => {
+		if (typeof id === "undefined") return;
+		setInternalSelectedMenu(id);
+	};
 
 	useEffect(() => {
 		// Dropdown açıldığında onOpened, kapandığında onClosed callback'lerini çağır
@@ -124,7 +133,7 @@ export const Dropdown = ({
 					className={classNames(
 						"absolute",
 						{
-							[`bg-paper-card divide-y divide-custom-divider overflow-hidden rounded-lg border border-custom-card-border ${theme === "light" && " shadow-card"}`]:
+							[`bg-paper-card divide-y divide-custom-divider overflow-hidden rounded-lg border border-custom-divider ${theme === "light" && " shadow-card"}`]:
 								typeof styleClass?.menu?.defaultStyleActive === "undefined" || styleClass?.menu?.defaultStyleActive === null
 									? true
 									: styleClass?.menu?.defaultStyleActive,
@@ -138,7 +147,16 @@ export const Dropdown = ({
 					{Children.toArray(children).map((child) => {
 						// Sadece DropdownItem bileşenini render et
 						if (!isValidElement(child) || child.type !== DropdownItem) return null;
-						return cloneElement(child as ReactElement<{ styleClass?: ICustomStylesConfig }>, { styleClass: styleClass?.item }); // DropdownItem'ı olduğu gibi render et
+						const childId = (child.props as IDropdownItem).id?.toString();
+						return (
+							// todo: onKeyDown
+							<div onKeyDown={() => {}} onClick={() => handleSelectMenu(childId)} key={childId}>
+								{cloneElement(child as ReactElement<{ styleClass?: ICustomStylesConfig; isSelectedMenu: boolean }>, {
+									styleClass: styleClass?.item,
+									isSelectedMenu: internalSelectedMenu === childId,
+								})}
+							</div>
+						);
 					})}
 				</div>
 			)}

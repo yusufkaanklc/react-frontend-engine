@@ -25,12 +25,12 @@ export type ISizeSchema = Record<ISize, string>;
  */
 export const Toggle = ({
 	size = "sm",
-	checked,
+	checked = false,
 	isInvalid,
 	value,
 	color = "primary-main",
 	name,
-	className,
+	className = "",
 	...props
 }: IRadioBox): JSX.Element => {
 	const [isChecked, setIsChecked] = useState(checked);
@@ -51,6 +51,11 @@ export const Toggle = ({
 		"2xl": "h-12 w-12",
 	};
 
+	const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setIsChecked((prev) => !prev);
+		props.onChange?.(e);
+	};
+
 	useEffect(() => {
 		if (typeof value === "undefined" || value === null) return;
 		setIsChecked(value);
@@ -66,14 +71,21 @@ export const Toggle = ({
 			htmlFor={props.id}
 			className={classNames(
 				"relative inline-block cursor-pointer rounded-full bg-custom-divider transition [-webkit-tap-highlight-color:_transparent]",
-				{ [`bg-${color}`]: isChecked && !isInvalid, "bg-error-dark": isInvalid }, // `checked` durumu burada doğru şekilde kontrol edilmelidir
+				{ [`bg-${color}`]: isChecked && !isInvalid, "bg-error-dark": isInvalid },
 				sizeSchema[size],
 				className,
 			)}
 		>
-			<input data-testid={"toggle-input"} checked={isChecked} type="checkbox" {...props} className="sr-only" />
+			<input
+				data-testid={"toggle-input"}
+				{...props}
+				checked={isChecked}
+				type="checkbox"
+				className="sr-only"
+				onChange={handleToggle}
+			/>
 			<span
-				data-testid={"toggle-icon-box"}
+				data-testid={"toggle-icon"}
 				className={classNames(
 					"absolute inset-y-0 z-10 m-1 inline-flex items-center justify-center rounded-full bg-white transition-transform",
 					iconBoxSizeSchema[size],

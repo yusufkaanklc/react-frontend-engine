@@ -4,6 +4,21 @@ import { icons } from "@/plugins/Icons.tsx";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 
+/**
+ * Checkbox bileşeni, kullanıcıların bir seçenek veya durumu işaretlemesini sağlamak için kullanılır.
+ *
+ * @param {IRadioBox} props - Bileşen için gereken özellikler.
+ * @param {string} [props.color="primary-main"] - Checkbox'ın renk şeması (varsayılan: "primary-main").
+ * @param {boolean} [props.checked=false] - Checkbox'ın işaretli olup olmadığını belirtir (varsayılan: false).
+ * @param {string} [props.name] - Checkbox öğesinin adı.
+ * @param {any} [props.value] - Checkbox öğesinin değeri (başlangıçta undefined veya null olabilir).
+ * @param {boolean} [props.isInvalid=false] - Checkbox'ın geçersiz olup olmadığını belirtir (varsayılan: false).
+ * @param {ISize} [props.size="md"] - Checkbox boyutunu belirtir (varsayılan: "md").
+ * @param {string} [props.id] - Checkbox öğesinin benzersiz kimliği.
+ * @param {string} [props.className] - Ek CSS sınıfları eklemek için kullanılabilir (opsiyonel).
+ *
+ * @returns {JSX.Element} Checkbox bileşenini döndürür.
+ */
 export const Checkbox = ({
 	color = "primary-main",
 	checked,
@@ -33,6 +48,10 @@ export const Checkbox = ({
 		"2xl": "w-9 h-9",
 	};
 
+	const handleClick = () => {
+		setIsChecked((prev) => !prev);
+	};
+
 	useEffect(() => {
 		setIsChecked(checked);
 	}, [checked]);
@@ -43,9 +62,12 @@ export const Checkbox = ({
 	}, [value]);
 
 	return (
+		// todo: onKeyDown
 		<label
 			data-testid={"checkbox-label"}
 			data-invalid={isInvalid}
+			onKeyDown={() => {}}
+			onClick={handleClick}
 			htmlFor={id}
 			className={classNames(
 				"relative appearance-none inline-block border rounded-md",

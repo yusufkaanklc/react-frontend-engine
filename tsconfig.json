@@ -34,10 +34,9 @@
    "include": [
       "src", 
       "cypress",
-     
+      "cypress-real-events"
     ],
    "exclude": [
-      "src/test",
    "node_modules",
    "cypress/screenshots", 
    "cypress/videos"

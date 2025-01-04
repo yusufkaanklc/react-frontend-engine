@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { forwardRef } from "react";
 
 export const DropdownTrigger = forwardRef<HTMLButtonElement, IDropdownTrigger>(
-	({ isOpen, setIsOpen, styleClass, children }, ref) => {
+	({ isOpen, setIsOpen, styleClass, children, ...props }, ref) => {
 		return (
 			<button
 				type={"button"}
@@ -29,6 +29,7 @@ export const DropdownTrigger = forwardRef<HTMLButtonElement, IDropdownTrigger>(
 					})
 				}
 				onClick={() => setIsOpen?.(!isOpen)}
+				{...props}
 			>
 				{children}
 			</button>

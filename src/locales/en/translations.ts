@@ -1,5 +1,15 @@
 export const enTranslations = {
 	theme: {
+		sidebar: {
+			collapsed_tooltip: "Sidebar collapse",
+		},
+		navbar: {
+			theme_tooltip: "Theme change",
+			search_placeholder: "Search...",
+			notifications_tooltip: "Notifications",
+			language_tooltip: "Language change",
+			user_menu_tooltip: "User menu",
+		},
 		select: {
 			no_select_label: "Select",
 			no_option_found_label: "No content found",

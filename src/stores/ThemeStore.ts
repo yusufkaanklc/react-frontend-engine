@@ -18,11 +18,16 @@ const getInitialTheme = (): ITheme => {
 		typeof window.matchMedia === "function" ? window.matchMedia("(prefers-color-scheme: dark)").matches : "dark";
 	const savedTheme = localStorage.getItem(storageTypes.THEME_STORAGE);
 
-	if (savedTheme && themeTypes.includes(savedTheme)) {
+	if (savedTheme && (themeTypes.DARK === savedTheme || themeTypes.LIGHT === savedTheme)) {
 		return savedTheme as ITheme;
 	}
 
 	return prefersDarkScheme ? "dark" : "light";
+};
+
+const setThemeData = (theme: ITheme) => {
+	changeAttribute(theme);
+	localStorage.setItem(storageTypes.THEME_STORAGE, theme);
 };
 
 export const useThemeStore = create<IThemeStore>((set) => ({
@@ -34,11 +39,15 @@ export const useThemeStore = create<IThemeStore>((set) => ({
 		set({ theme: initialTheme });
 	},
 
+	setTheme: (theme: ITheme) => {
+		set({ theme });
+		setThemeData(theme);
+	},
+
 	toggleTheme: () =>
 		set((state) => {
-			const newTheme = state.theme === "light" ? "dark" : "light";
-			changeAttribute(newTheme);
-			localStorage.setItem(storageTypes.THEME_STORAGE, newTheme);
+			const newTheme = state.theme === themeTypes.LIGHT ? themeTypes.DARK : themeTypes.LIGHT;
+			setThemeData(newTheme);
 			return { theme: newTheme };
 		}),
 }));

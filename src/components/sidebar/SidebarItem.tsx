@@ -6,6 +6,7 @@ import { useUIStore } from "@/stores/UIStore.ts";
 import { keyboardUtil } from "@/utils/KeyboardUtil.ts";
 import classNames from "classnames";
 import { type JSX, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 /**
  * Menüyü render eden yardımcı fonksiyon. Menü öğelerini sıralı bir liste olarak render eder.
@@ -16,6 +17,8 @@ import { type JSX, useCallback } from "react";
  */
 export const SidebarItem = ({ isActivated = false, menu, isChild = false }: ISidebarItem): JSX.Element => {
 	const sidebarCollapsed = useUIStore((s) => s.sidebarCollapsed);
+
+	const { t } = useTranslation();
 
 	// Menü öğesine tıklandığında yönlendirme işlemi için `useCallback` kullanımı
 	const handleMenuClick = useCallback((action?: ISidebarMenuAction) => {
@@ -56,7 +59,6 @@ export const SidebarItem = ({ isActivated = false, menu, isChild = false }: ISid
 			>
 				{menu.icon && (
 					<IconBox
-						data-testid={"sidebar-item-icon"}
 						data-activated={isActivated}
 						color={"text-sidebar-item-color"}
 						className={"data-[activated='true']:text-sidebar-item-active-color hover:text-sidebar-item-active-color"}
@@ -75,7 +77,7 @@ export const SidebarItem = ({ isActivated = false, menu, isChild = false }: ISid
 							{ "ml-4": menu.icon && !sidebarCollapsed.status }, // margin sağda icon varsa
 						)}
 					>
-						{menu.text}
+						{t(menu.text)}
 					</span>
 				)}
 			</div>

@@ -5,6 +5,7 @@ import { DropdownTrigger } from "@/components/dropdown/DropdownTrigger";
 import type { IDropdownStyle } from "@/interfaces/components/dropdown/IDropdown";
 import { handleLanguageChange } from "@/plugins/I18N";
 import { useLanguageStore } from "@/stores/LanguageStore.ts";
+import { useTranslation } from "react-i18next";
 
 /**
  * Dil değiştirme bileşeni.
@@ -13,6 +14,7 @@ import { useLanguageStore } from "@/stores/LanguageStore.ts";
  * @component
  */
 export const LanguageChanger = () => {
+	const { t } = useTranslation();
 	// Seçili dil verisini store'dan alır
 	const selectedLanguage = useLanguageStore((state) => state.selectedLanguage);
 	// Dil listesi verisini store'dan alır
@@ -36,29 +38,32 @@ export const LanguageChanger = () => {
 	if (!selectedLanguage) return null;
 
 	return (
-		<Dropdown styleClass={dropdownStyleConfig} position="bottom-left">
-			<DropdownTrigger>
-				<IconBox>
-					{typeof selectedLanguage.flag === "string" ? (
-						<img alt={selectedLanguage.name} src={selectedLanguage.flag} />
-					) : (
-						selectedLanguage.flag
-					)}
-				</IconBox>
-				<p>{selectedLanguage.name}</p>
-			</DropdownTrigger>
+		<div data-testid={"language-changer"}>
+			<Dropdown selectedMenu={selectedLanguage.slug} styleClass={dropdownStyleConfig} position="bottom-left">
+				<DropdownTrigger data-tooltip-id={"global-tooltip"} data-tooltip-content={t("theme.navbar.language_tooltip")}>
+					<IconBox>
+						{typeof selectedLanguage.flag === "string" ? (
+							<img alt={selectedLanguage.name} src={selectedLanguage.flag} />
+						) : (
+							selectedLanguage.flag
+						)}
+					</IconBox>
+					<p>{selectedLanguage.name}</p>
+				</DropdownTrigger>
 
-			{languages?.map((lang, index) => (
-				<DropdownItem
-					isActivated={lang.slug === selectedLanguage?.slug}
-					key={index.toString()}
-					data-activated={lang.slug === selectedLanguage?.slug}
-					onClick={() => handleLanguageClick(lang.slug)}
-				>
-					<IconBox>{typeof lang.flag === "string" ? <img alt={lang.name} src={lang.flag} /> : lang.flag}</IconBox>
-					<p>{lang.name}</p>
-				</DropdownItem>
-			))}
-		</Dropdown>
+				{languages?.map((lang, index) => (
+					<DropdownItem
+						id={lang.slug}
+						isSelectedMenu={lang.slug === selectedLanguage?.slug}
+						key={index.toString()}
+						data-activated={lang.slug === selectedLanguage?.slug}
+						onClick={() => handleLanguageClick(lang.slug)}
+					>
+						<IconBox>{typeof lang.flag === "string" ? <img alt={lang.name} src={lang.flag} /> : lang.flag}</IconBox>
+						<p>{lang.name}</p>
+					</DropdownItem>
+				))}
+			</Dropdown>
+		</div>
 	);
 };

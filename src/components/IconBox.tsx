@@ -26,7 +26,7 @@ export const IconBox = ({
 
 	return (
 		<div
-			data-testid={"icon-box-container"}
+			data-testid={"icon-box"}
 			className={classNames(
 				"flex items-center justify-center w-max h-max cursor-pointer",
 				`rounded-${radius}`,

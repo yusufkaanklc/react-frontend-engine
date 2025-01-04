@@ -12,8 +12,9 @@
     "tailwind.config.js"
   ],
   "scripts": {
-    "test:cli": "cypress open",
-    "test": "cypress run --headless",
+    "test": "cypress open",
+    "test:comp": "cypress run --component --browser chrome",
+    "test:e2e": "cypress run --e2e",
     "dev": "vite",
     "build": "tsc -b && vite build"
   },
@@ -47,6 +48,7 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
+    "cypress-real-events": "^1.13.0",
     "@biomejs/biome": "1.9.4",
     "@eslint/js": "^9.17.0",
     "@tailwindcss/typography": "^0.5.15",

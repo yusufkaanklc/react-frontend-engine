@@ -21,6 +21,7 @@ export const Select = ({
 	noOptionFoundLabel = "theme.select.no_option_found_label",
 	onBlur,
 	isSearchable = false,
+	name,
 }: ISelect) => {
 	const { t } = useTranslation();
 	const defaultOption = { value: "", label: t(noSelectLabel) };
@@ -64,7 +65,7 @@ export const Select = ({
 
 	// Blur Olayı
 	const handleBlur = () => {
-		if (searchValue !== findLabelByValue(selectedValue)) setSearchValue(findLabelByValue(selectedValue));
+		if (options.length > 0 && searchValue !== findLabelByValue(selectedValue)) setSearchValue(findLabelByValue(selectedValue));
 		setTimeout(() => {
 			setFilteredOptions(options);
 			setIsOpen(false);
@@ -133,7 +134,7 @@ export const Select = ({
 	useEffect(() => {
 		if (typeof value === "undefined" || value === null || value === selectedValue) return;
 		setSelectedValue(value);
-	}, [value, selectedValue]);
+	}, [value]);
 
 	useEffect(() => {
 		if (isOpen) return;
@@ -144,6 +145,7 @@ export const Select = ({
 		<div data-toggle={isOpen} data-testid="select-container" className={classNames("relative group inline-block", className)}>
 			{/* Seçim veya Arama Alanı */}
 			<Input
+				name={name}
 				readOnly={!isSearchable}
 				onBlur={handleBlur}
 				id={id}
@@ -151,11 +153,10 @@ export const Select = ({
 				icon={iconRenderer()}
 				isInvalid={isInvalid}
 				onKeyDown={(e) => {
-					e.preventDefault();
 					keyboardUtil({ e, key: "Enter", callback: toggleDropdown });
+					if (!isOpen) return;
 					keyboardUtil({ e, key: "ArrowUp", callback: () => changeItem("up") });
 					keyboardUtil({ e, key: "ArrowDown", callback: () => changeItem("down") });
-					if (!isOpen) return;
 					keyboardUtil({
 						e,
 						key: "Enter",
@@ -167,7 +168,7 @@ export const Select = ({
 				value={searchValue}
 				onChange={handleSearchChange}
 				onClick={toggleDropdown}
-				className="w-full z-40"
+				className="z-40"
 			/>
 
 			{/* Seçenek Listesi */}
@@ -203,7 +204,7 @@ export const Select = ({
 						</li>
 					))
 				) : (
-					<li data-testid={"select-no-option"} className="px-3 py-2 text-body2">
+					<li data-testid={"select-no-option"} className="px-3 py-2 text-body2 text-color-primary">
 						{t(noOptionFoundLabel)}
 					</li>
 				)}

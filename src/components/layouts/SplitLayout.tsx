@@ -9,10 +9,13 @@ export const SplitLayout = ({ image, title, subtitle, direction = "normal" }: IS
 	return (
 		<div
 			data-testid={"split-layout"}
-			className={classNames("flex flex-col lg:flex-row items-center bg-fixed bg-cover bg-center w-screen h-full lg:h-screen", {
-				"bg-split-layout-light": theme === "light",
-				"bg-split-layout-dark": theme === "dark",
-			})}
+			className={classNames(
+				"flex flex-col lg:flex-row items-center overflow-x-hidden bg-fixed bg-cover bg-center w-full h-full lg:h-screen",
+				{
+					"bg-split-layout-light": theme === "light",
+					"bg-split-layout-dark": theme === "dark",
+				},
+			)}
 		>
 			{/* Sol taraf - Görsel */}
 			<div
@@ -35,7 +38,7 @@ export const SplitLayout = ({ image, title, subtitle, direction = "normal" }: IS
 				data-testid={"content-container"}
 				className={`w-full lg:w-[42rem] h-[42rem] lg:h-full p-10 ${isReversed ? "order-1" : "order-2"}`}
 			>
-				<div className="h-full p-4 lg:p-8 w-full overflow-y-auto bg-paper-default rounded-xl">
+				<div className="h-full p-4 lg:p-8 w-full overflow-y-auto overflow-x-hidden bg-paper-default rounded-xl">
 					<Outlet />
 				</div>
 			</div>

@@ -1,5 +1,15 @@
 export const trTranslations = {
 	theme: {
+		sidebar: {
+			collapsed_tooltip: "Sidebar genişlet",
+		},
+		navbar: {
+			theme_tooltip: "Tema değiştir",
+			search_placeholder: "Arama yap...",
+			notifications_tooltip: "Bildirimler",
+			language_tooltip: "Dil değiştir",
+			user_menu_tooltip: "Kullanıcı menüsü",
+		},
 		select: {
 			no_select_label: "Seçiniz",
 			no_option_found_label: "İçerik Bulunamadı",

@@ -1,33 +1,24 @@
 import type { IButton } from "@/interfaces/components/IButton.ts";
 import type { IColorVariants, ISize } from "@/interfaces/types/IMetrics.ts";
+import type { ITheme } from "@/interfaces/types/ITheme";
 import { useThemeStore } from "@/stores/ThemeStore";
 import classNames from "classnames";
 
-export const Button = ({
-	size = "md",
-	variant = "contained",
-	colorScheme: colorSchemeProp = "primary",
-	children,
-	className,
-	...props
-}: IButton) => {
-	// Buton boyutlandırma şeması
-	const sizeScheme: Record<ISize, string> = {
-		sm: "px-2 py-1 text-caption",
-		md: "px-4 py-2 text-body2",
-		lg: "px-6 py-3 text-body2",
-		xl: "px-8 py-4 text-body1",
-		"2xl": "px-10 py-6 text-subtitle1",
-	};
+// Buton boyutlandırma şeması
+export const buttonSizeScheme: Record<ISize, string> = {
+	sm: "px-2 py-1 text-caption",
+	md: "px-4 py-2 text-body2",
+	lg: "px-6 py-3 text-body2",
+	xl: "px-8 py-4 text-body1",
+	"2xl": "px-10 py-6 text-subtitle1",
+};
 
-	const theme = useThemeStore(state => state.theme)
-
-	// Buton renk ve stil varyantları
-	const colorScheme: Record<"contained" | "outlined" | "underlined", Record<IColorVariants, string>> = {
+// Buton renk ve stil varyantları
+export const buttonColorScheme = (theme: ITheme) =>
+	({
 		contained: {
 			primary: "bg-primary-main hover:bg-primary-dark text-white border border-primary-main hover:border-primary-hovered",
-			secondary:
-				`bg-secondary-main hover:bg-secondary-dark ${theme === "light" ? "text-white": "text-black"} text-white border border-secondary-main hover:border-secondary-hovered`,
+			secondary: `bg-secondary-main hover:bg-secondary-dark ${theme === "light" ? "text-white" : "text-black"} text-white border border-secondary-main hover:border-secondary-hovered`,
 			success: "bg-success-main hover:bg-success-dark text-white border border-success-main hover:border-success-hovered",
 			warning: "bg-warning-main hover:bg-warning-dark text-white border border-warning-main hover:border-warning-hovered",
 			error: "bg-error-main hover:bg-error-dark text-white border border-error-main hover:border-error-hovered",
@@ -49,15 +40,25 @@ export const Button = ({
 			error: "bg-transparent hover:underline text-error-main",
 			info: "bg-transparent hover:underline text-info-main",
 		},
-	};
+	}) as Record<"contained" | "outlined" | "underlined", Record<IColorVariants, string>>;
+
+export const Button = ({
+	size = "md",
+	variant = "contained",
+	colorScheme: colorSchemeProp = "primary",
+	children,
+	className,
+	...props
+}: IButton) => {
+	const theme = useThemeStore((state) => state.theme);
 
 	return (
 		<button
 			data-testid={"button"}
 			className={classNames(
 				"rounded-md shadow-2",
-				sizeScheme[size], // Boyutlandırma
-				colorScheme[variant][colorSchemeProp], // Renk ve stil
+				buttonSizeScheme[size], // Boyutlandırma
+				buttonColorScheme(theme)[variant][colorSchemeProp], // Renk ve stil
 				className, // Ekstra sınıflar
 			)}
 			{...props}
