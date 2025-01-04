@@ -6,6 +6,7 @@ import { DropdownItem } from "@/components/dropdown/DropdownItem";
 import { DropdownTrigger } from "@/components/dropdown/DropdownTrigger";
 import type { IDropdownStyle } from "@/interfaces/components/dropdown/IDropdown.ts";
 import type { IUserMenu, IUserMenuData } from "@/interfaces/components/navbar/INavbar";
+import { useTranslation } from "react-i18next";
 
 export const UserMenu = ({ data }: { data: IUserMenuData }) => {
 	const dropdownStyleConfig: IDropdownStyle = {
@@ -26,10 +27,12 @@ export const UserMenu = ({ data }: { data: IUserMenuData }) => {
 		action();
 	};
 
+	const { t } = useTranslation();
+
 	return (
 		<div data-testid={"user-menu"}>
 			<Dropdown size={"lg"} styleClass={dropdownStyleConfig} position={"bottom-left"}>
-				<DropdownTrigger>
+				<DropdownTrigger data-tooltip-id={"global-tooltip"} data-tooltip-content={t("theme.navbar.user_menu_tooltip")}>
 					<Avatar image={data.avatar ?? "/media/man2.webp"} alt={"user"} />
 				</DropdownTrigger>
 				<DropdownItem styleClass={{ defaultStyleActive: false, customStyle: "p-3" }}>
@@ -41,7 +44,7 @@ export const UserMenu = ({ data }: { data: IUserMenuData }) => {
 						<DropdownItem key={index.toString()}>
 							<div onKeyDown={() => {}} onClick={() => handleMenuClick(menu.action)} className={"flex items-center gap-4"}>
 								<IconBox>{menu.icon}</IconBox>
-								<p>{menu.text}</p>
+								<p>{t(menu.text)}</p>
 							</div>
 						</DropdownItem>
 					))}

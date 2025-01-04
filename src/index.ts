@@ -10,6 +10,7 @@ export { Card } from "@/components/card/Card";
 export { CardAction } from "@/components/card/CardAction";
 export { CardBody } from "@/components/card/CardBody";
 export { CardHeader } from "@/components/card/CardHeader";
+export { DetailList } from "@/components/DetailList";
 export { Dialog } from "@/components/dialog/Dialog";
 export { DialogAction } from "@/components/dialog/DialogAction";
 export { DialogBody } from "@/components/dialog/DialogBody";
@@ -33,11 +34,13 @@ export { Navbar } from "@/components/navbar/Navbar";
 export { Pill } from "@/components/Pill";
 export { Sidebar } from "@/components/sidebar/Sidebar";
 export { Tab } from "@/components/Tab";
+
 export { Table } from "@/components/Table";
 
 // Interfaces
 export type { IDropdownStyle } from "@/interfaces/components/dropdown/IDropdown";
 export type { IFormButton, IFormField, IFormFields } from "@/interfaces/components/form/IFormCreator.ts";
+export type { IDetailListData, IDetailListOptions } from "@/interfaces/components/IDetailList";
 export type { ITabItem } from "@/interfaces/components/ITab";
 export type { ITableCellRendererParams, ITableColumn, ITableOptions, ITableRow } from "@/interfaces/components/ITable";
 export type { IUserMenuData } from "@/interfaces/components/navbar/INavbar.ts";

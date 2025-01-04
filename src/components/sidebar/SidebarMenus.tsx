@@ -7,6 +7,7 @@ import { mediaQueryUtil } from "@/utils/MediaQueryUtil";
 import classNames from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
 import { type JSX, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 
 /**
@@ -22,6 +23,8 @@ export const SidebarMenus = ({
 }: { menus: ISidebarMenu[]; hasRendered?: boolean }): (JSX.Element | null)[] | undefined => {
 	// Sidebar'ın çökme durumunu store'dan alıyoruz
 	const sidebarCollapsed = useUIStore((state) => state.sidebarCollapsed);
+
+	const { t } = useTranslation();
 
 	const location = useLocation();
 
@@ -59,7 +62,7 @@ export const SidebarMenus = ({
 								transition={{ duration: 0.3 }}
 								className={classNames("opacity-100 truncate text-nowrap text-body2 leading-5 text-sidebar-group-title-color")}
 							>
-								{menu.text}
+								{t(menu.text)}
 							</motion.div>
 						) : null}
 					</AnimatePresence>
@@ -107,7 +110,7 @@ export const SidebarMenus = ({
 									{ "ml-4": menu.icon && !sidebarCollapsed.status }, // margin sağda icon varsa
 								)}
 							>
-								{menu.text}
+								{t(menu.text)}
 							</span>
 						</div>
 						{/* Çökme durumu ve ok simgesi */}

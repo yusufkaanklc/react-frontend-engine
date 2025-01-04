@@ -1,9 +1,9 @@
 import {
 	ArrowLeftCircleIcon,
 	ArrowRightCircleIcon,
+	ArrowUpTrayIcon,
 	ArrowsPointingInIcon,
 	ArrowsPointingOutIcon,
-	ArrowUpTrayIcon,
 	Bars3Icon,
 	BellIcon,
 	CheckIcon,

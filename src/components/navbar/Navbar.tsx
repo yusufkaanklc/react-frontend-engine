@@ -9,6 +9,7 @@ import { useLanguageStore } from "@/stores/LanguageStore.ts";
 import { useThemeStore } from "@/stores/ThemeStore.ts";
 import { useUIStore } from "@/stores/UIStore.ts";
 import classNames from "classnames";
+import { useTranslation } from "react-i18next";
 
 export const Navbar = ({ extraComponents, isThemeSwitcherActive = true, userMenuData, notifications }: INavbar) => {
 	const setSidebarCollapsed = useUIStore((state) => state.setSidebarCollapsed);
@@ -16,6 +17,8 @@ export const Navbar = ({ extraComponents, isThemeSwitcherActive = true, userMenu
 	const currentTheme = useThemeStore((state) => state.theme);
 	const languages = useLanguageStore((state) => state.languages);
 	const toggleTheme = useThemeStore((s) => s.toggleTheme);
+
+	const { t } = useTranslation();
 
 	const handleMobileMenuTriggerClick = () => {
 		setSidebarCollapsed({ isLocked: sidebarCollapsed.isLocked, status: !sidebarCollapsed.status });
@@ -50,11 +53,22 @@ export const Navbar = ({ extraComponents, isThemeSwitcherActive = true, userMenu
 						{icons.outline.search}
 					</IconBox>
 				</label>
-				<Input id={"search-input"} data-testid={"search-input"} className={"w-full"} placeholder={"Arama yap..."} />
+				<Input
+					id={"search-input"}
+					data-testid={"search-input"}
+					className={"w-full"}
+					placeholder={t("theme.navbar.search_placeholder")}
+				/>
 			</div>
 			<div className={"flex items-center gap-2 md:gap-4 border-l border-custom-divider pl-4"}>
 				{isThemeSwitcherActive && (
-					<IconBox color={"color-primary"} isHoverable onClick={handleThemeChange}>
+					<IconBox
+						color={"color-primary"}
+						isHoverable
+						onClick={handleThemeChange}
+						data-tooltip-id={"global-tooltip"}
+						data-tooltip-content={t("theme.navbar.theme_tooltip")}
+					>
 						{currentTheme === "light" ? (
 							<span data-testid="sun-icon">{icons.outline.sun}</span>
 						) : (

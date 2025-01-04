@@ -34,18 +34,14 @@ export const Breadcrumb = () => {
 					crumbs.map((crumb, index) => (
 						<li key={index.toString()} data-testid={"breadcrumb-item"}>
 							<div className={"flex gap-1 transition items-center opacity-70 hover:opacity-100"}>
-								{crumb?.icon && (
-									<IconBox data-testid={"breadcrumb-icon"} size={"sm"}>
-										{crumb?.icon}
-									</IconBox>
-								)}
-								<Link data-testid={"breadcrumb-title"} to={crumb?.path || ""} className="block">
+								{crumb?.icon && <IconBox size={"sm"}>{crumb?.icon}</IconBox>}
+								<Link data-testid={"breadcrumb-link"} to={crumb?.path || ""} className="block">
 									<span className={"text-body2"}>{crumb?.title}</span>
 								</Link>
 								{index !== crumbs.length - 1 && (
-									<IconBox data-testid={"breadcrumb-arrow"} size={"sm"}>
-										{icons.outline.chevron_right}
-									</IconBox>
+									<span data-testid={"breadcrumb-arrow"}>
+										<IconBox size={"sm"}>{icons.outline.chevron_right}</IconBox>
+									</span>
 								)}
 							</div>
 						</li>

@@ -5,6 +5,7 @@ import { DropdownTrigger } from "@/components/dropdown/DropdownTrigger";
 import type { IDropdownStyle } from "@/interfaces/components/dropdown/IDropdown";
 import { handleLanguageChange } from "@/plugins/I18N";
 import { useLanguageStore } from "@/stores/LanguageStore.ts";
+import { useTranslation } from "react-i18next";
 
 /**
  * Dil değiştirme bileşeni.
@@ -13,6 +14,7 @@ import { useLanguageStore } from "@/stores/LanguageStore.ts";
  * @component
  */
 export const LanguageChanger = () => {
+	const { t } = useTranslation();
 	// Seçili dil verisini store'dan alır
 	const selectedLanguage = useLanguageStore((state) => state.selectedLanguage);
 	// Dil listesi verisini store'dan alır
@@ -38,7 +40,7 @@ export const LanguageChanger = () => {
 	return (
 		<div data-testid={"language-changer"}>
 			<Dropdown selectedMenu={selectedLanguage.slug} styleClass={dropdownStyleConfig} position="bottom-left">
-				<DropdownTrigger>
+				<DropdownTrigger data-tooltip-id={"global-tooltip"} data-tooltip-content={t("theme.navbar.language_tooltip")}>
 					<IconBox>
 						{typeof selectedLanguage.flag === "string" ? (
 							<img alt={selectedLanguage.name} src={selectedLanguage.flag} />

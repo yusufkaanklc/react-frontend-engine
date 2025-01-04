@@ -4,7 +4,7 @@ import {
 	exampleFormData,
 	exampleFormSchema,
 	initialValues,
-} from "#/cypress/fixtures/stories/ExampleFormModel";
+} from "#/cypress/fixtures/stories/FormStory";
 import { FormCreator, icons } from "@/index";
 import type { IFormCreator } from "@/interfaces/components/form/IFormCreator";
 import { remToPx } from "@/utils/RemToPx";
