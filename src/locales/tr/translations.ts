@@ -1,5 +1,27 @@
 export const trTranslations = {
 	theme: {
+		error: {
+			not_found: {
+				title: "404 - Sayfa Bulunamadı",
+				subtitle: "Aradığınız sayfa bulunamadı. Lütfen başka bir sayfa deneyiniz.",
+				button_text: "Anasayfa'ya Git",
+			},
+			server_error: {
+				title: "500 - Sunucu Hatası",
+				subtitle: "Sunucu içinde bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.",
+				button_text: "Anasayfa'ya Git",
+			},
+			forbidden: {
+				title: "403 - Erişim Engellendi",
+				subtitle: "Bu sayfaya erişim izniniz yok. Lütfen başka bir sayfa deneyiniz.",
+				button_text: "Anasayfa'ya Git",
+			},
+			unauthorized: {
+				title: "401 - Yetkisiz Erişim",
+				subtitle: "Bu sayfaya erişim izniniz yok. Lütfen başka bir sayfa deneyiniz.",
+				button_text: "Anasayfa'ya Git",
+			},
+		},
 		sidebar: {
 			collapsed_tooltip: "Sidebar genişlet",
 		},

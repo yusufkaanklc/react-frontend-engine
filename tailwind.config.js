@@ -1,3 +1,5 @@
+import { bgImages } from "./src/styles/tailwind/BgImages.ts";
+import { fontSizes } from "./src/styles/tailwind/FontSizes.ts";
 import { screens } from "./src/styles/tailwind/Screens.ts";
 import { boxShadow } from "./src/styles/tailwind/Shadow.ts";
 import { action } from "./src/styles/tailwind/colors/Action.ts";
@@ -20,6 +22,7 @@ import { slate } from "./src/styles/tailwind/colors/Slate.ts";
 import { success } from "./src/styles/tailwind/colors/Success.ts";
 import { warning } from "./src/styles/tailwind/colors/Warning.ts";
 import { yellow } from "./src/styles/tailwind/colors/Yellow.ts";
+
 
 const colors = {
 	action,
@@ -96,7 +99,7 @@ export default {
 		"h-[4.5rem]",
 		"h-[5rem]",
 		"h-[6rem]",
-
+	
 		// Pixel değerleri
 		"h-[10px]",
 		"h-[20px]",
@@ -113,7 +116,7 @@ export default {
 		"h-[200px]",
 		"h-[250px]",
 		"h-[300px]",
-
+	
 		// Yüzdelik değerler
 		"h-[5%]",
 		"h-[10%]",
@@ -133,9 +136,8 @@ export default {
 	],
 	theme: {
 		extend: {
-			fontFamily: {
-				sans: ["Inter", "Helvetica", "sans-serif"],
-			},
+			fontSize: fontSizes,
+			backgroundImage: bgImages,
 			screens,
 			colors,
 			boxShadow,
@@ -146,24 +148,7 @@ export default {
 				60: 60,
 				70: 70,
 			},
-			fontSize: {
-				h1: "2.25rem", // 36px
-				h2: "1.875rem", // 30px
-				h3: "1.5rem", // 24px
-				h4: "1.25rem", // 20px
-				h5: "1rem", // 16px
-				h6: "0.875rem", // 14px
-				body1: "1rem", // 16px
-				body2: "0.875rem", // 14px
-				subtitle1: "1rem", // 16px
-				subtitle2: "0.875rem", // 14px
-				overline: "0.75rem", // 12px
-				caption: "0.75rem", // 12px
-			},
-			backgroundImage: {
-				"split-layout-light": "url('/public/media/split-layout/bg-light.jpeg')",
-				"split-layout-dark": "url('/public/media/split-layout/bg-dark.jpeg')",
-			},
+			
 		},
 	},
 	plugins: [],
