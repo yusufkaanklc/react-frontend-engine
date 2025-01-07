@@ -18,6 +18,10 @@ export { DialogHeader } from "@/components/dialog/DialogHeader";
 export { Dropdown } from "@/components/dropdown/Dropdown";
 export { DropdownItem } from "@/components/dropdown/DropdownItem";
 export { DropdownTrigger } from "@/components/dropdown/DropdownTrigger";
+export { ForbiddenErrorPage } from "@/components/error-pages/ForbiddenErrorPage";
+export { NotFoundPage } from "@/components/error-pages/NotFoundPage";
+export { ServerErrorPage } from "@/components/error-pages/ServerErrorPage";
+export { UnauthorizedErrorPage } from "@/components/error-pages/UnauthorizedErrorPage";
 export { FormControl } from "@/components/form/FormControl";
 export { FormCreator } from "@/components/form/FormCreator";
 export { IconBox } from "@/components/IconBox";
@@ -34,7 +38,6 @@ export { Navbar } from "@/components/navbar/Navbar";
 export { Pill } from "@/components/Pill";
 export { Sidebar } from "@/components/sidebar/Sidebar";
 export { Tab } from "@/components/Tab";
-
 export { Table } from "@/components/Table";
 
 // Interfaces
@@ -79,6 +82,7 @@ export type { ResourceLanguage } from "i18next";
 export type { IFileError } from "react-dropzone-kit";
 export { Controller, useForm } from "react-hook-form";
 export { useTranslation } from "react-i18next";
-export { Navigate, type LoaderFunction } from "react-router-dom";
+export { Navigate, Outlet, type LoaderFunction } from "react-router-dom";
 export { z as zod } from "zod";
 export { create } from "zustand";
+

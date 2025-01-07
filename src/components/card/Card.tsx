@@ -27,12 +27,12 @@ export const Card = ({ size = "md", children, styleClass, className = "" }: ICar
 
 	// Kartın farklı boyutları için genişlik değerleri.
 	const sizeScheme: Record<string, string> = {
-		sm: "w-[16rem]", // 256px
-		md: "w-[20rem]", // 320px
-		lg: "w-[24rem]", // 384px
-		xl: "w-[28rem]", // 448px
-		"2xl": "w-[32rem]", // 512px
-		full: "w-full", // Tam genişlik
+		sm: "w-[16rem]",
+		md: "w-[20rem]",
+		lg: "w-[24rem]",
+		xl: "w-[40rem]",
+		"2xl": "w-[56rem]",
+		full: "w-full",
 	};
 
 	// Kartın genel stillerini birleştirir.

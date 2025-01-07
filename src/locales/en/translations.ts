@@ -1,5 +1,27 @@
 export const enTranslations = {
 	theme: {
+		error: {
+			not_found: {
+				title: "404 - Page Not Found",
+				subtitle: "The page you are looking for does not exist. Please try another page.",
+				button_text: "Go to Home",
+			},
+			server_error: {
+				title: "500 - Server Error",
+				subtitle: "The server encountered an internal error. Please try again later.",
+				button_text: "Go to Home",
+			},
+			forbidden: {
+				title: "403 - Forbidden",
+				subtitle: "You do not have permission to access this page. Please try another page.",
+				button_text: "Go to Home",
+			},
+			unauthorized: {
+				title: "401 - Unauthorized",
+				subtitle: "You are not authorized to access this page. Please try another page.",
+				button_text: "Go to Home",
+			},
+		},
 		sidebar: {
 			collapsed_tooltip: "Sidebar collapse",
 		},
