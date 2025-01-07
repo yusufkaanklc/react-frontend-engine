@@ -1,7 +1,7 @@
 import { getOptionsAction } from "@/actions/server/GetOptionsAction.ts";
 import { IconBox } from "@/components/IconBox";
 import { Input } from "@/components/inputs/Input";
-import type { IOption, ISelect } from "@/interfaces/components/form/inputs/ISelect.ts";
+import type { IOption, ISelect } from "@/interfaces/components/inputs/ISelect";
 import { icons } from "@/plugins/Icons.tsx";
 import { keyboardUtil } from "@/utils/KeyboardUtil.ts";
 import classNames from "classnames";

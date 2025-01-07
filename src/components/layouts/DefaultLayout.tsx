@@ -18,7 +18,7 @@ export const DefaultLayout = ({ sidebar, navbar }: IDefaultLayout): JSX.Element 
 	const sidebarCollapsed = useUIStore((state) => state.sidebarCollapsed);
 
 	return (
-		<div data-testid={"default-layout"} className="h-screen overflow-auto flex">
+		<div data-testid={"default-layout"} className="h-auto min-h-screen overflow-y-auto overflow-x-hidden flex">
 			{/* Sidebar - Kenar Çubuğu */}
 			<div
 				data-testid={"sidebar-section"}
@@ -40,7 +40,7 @@ export const DefaultLayout = ({ sidebar, navbar }: IDefaultLayout): JSX.Element 
 				data-testid={"navbar-content-section"}
 				data-sidebar-collapsed={sidebarCollapsed.status}
 				className={classNames(
-					"flex-1 ml-0 duration-300 overflow-x-hidden overflow-y-auto transition-all flex flex-col",
+					"flex-1 ml-0 duration-300 transition-all flex flex-col",
 					"data-[sidebar-collapsed='false']:md:ml-72",
 					"data-[sidebar-collapsed='true']:md:ml-[4.5rem]",
 				)}

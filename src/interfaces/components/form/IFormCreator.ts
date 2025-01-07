@@ -1,4 +1,4 @@
-import type { IOption } from "@/interfaces/components/form/inputs/ISelect.ts";
+import type { IOption } from "@/interfaces/components/inputs/ISelect";
 import type { ICustomStylesConfig } from "@/interfaces/types/ICustomStyleConfig.ts";
 import type { IColorVariants, ISize } from "@/interfaces/types/IMetrics.ts";
 import type { ReactNode } from "react";
@@ -9,7 +9,7 @@ import type { z } from "zod";
 export type IFormFieldValueTypes = boolean | string | number | undefined | File[];
 
 export interface IDefaultFormField {
-	type: "text" | "email" | "select" | "checkbox" | "radiobox" | "toggle" | "textarea" | "password" | "dropzone";
+	type: "text" | "email" | "select" | "checkbox" | "radiobox" | "toggle" | "textarea" | "password" | "dropzone" | "quantity";
 	label: string;
 	disabled?: boolean;
 	checked?: boolean;
@@ -21,6 +21,10 @@ export interface IDefaultFormField {
 		options?: IOption[];
 		isSearchable?: boolean;
 		endpoint?: string;
+	};
+	quantitySettings?: {
+		min?: number;
+		max?: number;
 	};
 	dropzoneSettings?: {
 		multiple?: boolean;

@@ -24,7 +24,7 @@ describe("FormControl Component Tests", () => {
 			.and("have.text", "Test Label")
 			.haveCSS({
 				color: getCSSVariableValue(color.primary),
-				fontSize: `${remToPx(0.875)}px`,
+				fontSize: remToPx(0.875),
 			});
 
 		setup({ error: "Error Text", isRequired: true, label: "Test Label", className: "custom-class" });
@@ -45,7 +45,7 @@ describe("FormControl Component Tests", () => {
 			.and("have.text", "*")
 			.haveCSS({
 				color: getCSSVariableValue(error.dark),
-				fontSize: `${remToPx(0.875)}px`,
+				fontSize: remToPx(0.875),
 			});
 	});
 
@@ -58,7 +58,7 @@ describe("FormControl Component Tests", () => {
 			.and("have.text", "This field is required")
 			.haveCSS({
 				color: getCSSVariableValue(error.dark),
-				fontSize: `${remToPx(0.75)}px`,
+				fontSize: remToPx(0.75),
 			});
 	});
 

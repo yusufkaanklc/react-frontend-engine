@@ -1,6 +1,6 @@
 import { languageConfigs } from "#/cypress/fixtures/stories/LanguageTranslations";
 import { Select } from "@/components/inputs/Select";
-import type { IOption, ISelect } from "@/interfaces/components/form/inputs/ISelect";
+import type { IOption, ISelect } from "@/interfaces/components/inputs/ISelect";
 import { initI18n } from "@/plugins/I18N";
 import { color } from "@/styles/tailwind/colors/Color";
 import { common } from "@/styles/tailwind/colors/Common";

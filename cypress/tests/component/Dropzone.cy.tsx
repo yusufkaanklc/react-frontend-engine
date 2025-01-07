@@ -106,7 +106,7 @@ describe("Dropzone Component", () => {
 		cy.wait(100);
 		const dropzoneRulesText = cy.getByTestId("dropzone-rules-text");
 		dropzoneRulesText.should("be.visible");
-		dropzoneRulesText.haveCSS({ color: "rgb(240, 244, 248)", fontSize: `${remToPx(0.75)}px` });
+		dropzoneRulesText.haveCSS({ color: "rgb(240, 244, 248)", fontSize: remToPx(0.75) });
 		dropzoneRulesText.should(
 			"have.text",
 			"Kabul edilen en fazla boyut: 2 MB - Kabul edilen en fazla dosya sayısı: 2 - Kabul edilen formatlar: image/jpeg",
@@ -122,7 +122,7 @@ describe("Dropzone Component", () => {
 		dropzoneFileContainer.haveCSS({
 			display: "flex",
 			alignItems: "center",
-			gap: `${remToPx(0.75)}px`,
+			gap: remToPx(0.75),
 			padding: "0px 8px 8px",
 			overflow: "auto",
 		});
@@ -141,9 +141,9 @@ describe("Dropzone Component", () => {
 			cy.wrap(file).should("be.visible");
 			cy.wrap(file).haveCSS({
 				border: "1px solid rgb(50, 56, 62)",
-				borderRadius: `${remToPx(0.25)}px`,
-				padding: `${remToPx(0.5)}px`,
-				fontSize: `${remToPx(0.75)}px`,
+				borderRadius: remToPx(0.25),
+				padding: remToPx(0.5),
+				fontSize: remToPx(0.75),
 				color: "rgb(240, 244, 248)",
 				backgroundColor: "rgba(255, 255, 255, 0.08)",
 			});
@@ -163,9 +163,9 @@ describe("Dropzone Component", () => {
 		dropzoneFile.should("be.visible");
 		dropzoneFile.haveCSS({
 			border: "1px solid rgb(240, 68, 56)",
-			borderRadius: `${remToPx(0.25)}px`,
-			padding: `${remToPx(0.5)}px`,
-			fontSize: `${remToPx(0.75)}px`,
+			borderRadius: remToPx(0.25),
+			padding: remToPx(0.5),
+			fontSize: remToPx(0.75),
 			color: "rgb(240, 244, 248)",
 			backgroundColor: "rgba(249, 121, 112, 0.15)",
 		});

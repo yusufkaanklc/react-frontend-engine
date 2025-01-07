@@ -1,5 +1,5 @@
 import { Toggle } from "@/index";
-import type { IRadioBox } from "@/interfaces/components/form/inputs/IRadioBox";
+import type { IRadioBox } from "@/interfaces/components/inputs/IRadioBox";
 import { common } from "@/styles/tailwind/colors/Common";
 import { custom } from "@/styles/tailwind/colors/Custom";
 import { getCSSVariableValue } from "@/utils/GetCSSVariableValue";
@@ -21,8 +21,8 @@ describe("Toggle Component", () => {
 				cursor: "pointer",
 				borderRadius: "9999px",
 				backgroundColor: getCSSVariableValue(custom.divider),
-				height: `${remToPx(1.5)}px`,
-				width: `${remToPx(2.5)}px`,
+				height: remToPx(1.5),
+				width: remToPx(2.5),
 			});
 
 		cy.getByTestId("toggle-input").should("exist");
@@ -37,8 +37,8 @@ describe("Toggle Component", () => {
 				justifyContent: "center",
 				borderRadius: "9999px",
 				backgroundColor: getCSSVariableValue(common.white),
-				height: `${remToPx(1)}px`,
-				width: `${remToPx(1)}px`,
+				height: remToPx(1),
+				width: remToPx(1),
 			});
 	});
 

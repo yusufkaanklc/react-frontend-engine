@@ -46,14 +46,14 @@ const stylesProps: IDropdownStyle = {
 const defaultDropdownTriggerStyles: CSSProperties = {
 	display: "inline-flex",
 	alignItems: "center",
-	fontSize: `${remToPx(0.875)}px`,
+	fontSize: remToPx(0.875),
 	overflow: "hidden",
 	color: getCSSVariableValue(color.primary),
-	borderRadius: `${remToPx(0.5)}px`,
+	borderRadius: remToPx(0.5),
 	cursor: "pointer",
 	border: `1px solid ${getCSSVariableValue(custom.divider)}`,
 	backgroundColor: getCSSVariableValue(paper.card),
-	padding: `${remToPx(0.25)}px ${remToPx(0.5)}px`,
+	padding: `${remToPx(0.25)} ${remToPx(0.5)}`,
 };
 
 const defaultDropdownMenuStyles: CSSProperties = {
@@ -62,17 +62,17 @@ const defaultDropdownMenuStyles: CSSProperties = {
 	borderTopWidth: "1px",
 	borderBottomWidth: "1px",
 	overflow: "hidden",
-	borderRadius: `${remToPx(0.5)}px`,
+	borderRadius: remToPx(0.5),
 	borderColor: getCSSVariableValue(custom.divider),
-	width: `${remToPx(14)}px`,
-	margin: `${remToPx(0.5)}px 0px 0px`,
+	width: remToPx(14),
+	margin: `${remToPx(0.5)} 0px 0px`,
 	left: "0px",
 };
 
 const defaultDropdownItemStyles = (isSelectedMenu = false, isHovered = false) =>
 	({
-		fontSize: `${remToPx(0.875)}px`,
-		padding: `${remToPx(0.75)}px`,
+		fontSize: remToPx(0.875),
+		padding: remToPx(0.75),
 		backgroundColor: isSelectedMenu
 			? isHovered
 				? getCSSVariableValue(action.hover)

@@ -65,7 +65,7 @@ describe("Breadcrumb Component", () => {
 					.find("div")
 					.haveCSS({
 						display: "flex",
-						gap: `${remToPx(0.25)}px`,
+						gap: remToPx(0.25),
 						alignItems: "center",
 						opacity: "0.7",
 					});

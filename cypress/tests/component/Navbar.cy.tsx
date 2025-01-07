@@ -23,7 +23,7 @@ const commonNavbarCSS = {
 	display: "flex",
 	justifyContent: "space-between",
 	alignItems: "center",
-	gap: `${remToPx(1)}px`,
+	gap: remToPx(1),
 };
 
 // Navbar test senaryoları
@@ -39,7 +39,7 @@ describe("Navbar", () => {
 				.haveCSS({
 					...commonNavbarCSS,
 					backgroundColor: getCSSVariableValue(sidebar.default),
-					padding: `0px ${remToPx(2.5)}px`,
+					padding: `0px ${remToPx(2.5)}`,
 				});
 		});
 
@@ -50,7 +50,7 @@ describe("Navbar", () => {
 			cy.getByTestId("navbar").haveCSS({
 				...commonNavbarCSS,
 				backgroundColor: getCSSVariableValue(common.white),
-				padding: `0px ${remToPx(2.5)}px`,
+				padding: `0px ${remToPx(2.5)}`,
 			});
 		});
 
@@ -62,7 +62,7 @@ describe("Navbar", () => {
 			cy.getByTestId("navbar").haveCSS({
 				...commonNavbarCSS,
 				backgroundColor: getCSSVariableValue(sidebar.default),
-				padding: `0px ${remToPx(1)}px`,
+				padding: `0px ${remToPx(1)}`,
 			});
 		});
 	});

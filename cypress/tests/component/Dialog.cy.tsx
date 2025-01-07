@@ -56,14 +56,14 @@ const defaultDialogStyles = (type: IDialogTypes = "modal", zIndex = "101") =>
 		zIndex,
 		backgroundColor: getCSSVariableValue(paper.level2),
 		overflow: "hidden",
-		padding: `${remToPx(1)}px`,
+		padding: remToPx(1),
 		display: "flex",
 		flexDirection: "column",
-		gap: `${remToPx(2)}px`,
+		gap: remToPx(2),
 		height: `${type === "modal" ? window.innerHeight * 0.9 : window.innerHeight}px`,
-		maxWidth: `${remToPx(28)}px`,
-		margin: type === "modal" && !mediaQueryUtil("md") ? `0 ${remToPx(1)}px 0 ${remToPx(1)}px` : "0px",
-		borderRadius: type === "modal" ? `${remToPx(0.5)}px` : "0px",
+		maxWidth: remToPx(28),
+		margin: type === "modal" && !mediaQueryUtil("md") ? `0px ${remToPx(1)} 0px ${remToPx(1)}` : "0px",
+		borderRadius: type === "modal" ? remToPx(0.5) : "0px",
 	}) as CSSProperties;
 
 // İnset
@@ -104,13 +104,13 @@ const dialogContainerStyles = (type: IDialogTypes = "modal") =>
 const dialogHeaderStyles: CSSProperties = {
 	display: "flex",
 	alignItems: "center",
-	gap: `${remToPx(1)}px`,
+	gap: remToPx(1),
 	justifyContent: "space-between",
 };
 
 // dialog body stiller
 const dialogBodyStyles: CSSProperties = {
-	paddingRight: `${remToPx(0.5)}px`,
+	paddingRight: remToPx(0.5),
 	display: "block",
 	overflow: "hidden auto",
 };
@@ -119,7 +119,7 @@ const dialogBodyStyles: CSSProperties = {
 const dialogActionStyles: CSSProperties = {
 	display: "flex",
 	alignItems: "center",
-	gap: `${remToPx(1)}px`,
+	gap: remToPx(1),
 	justifyContent: "flex-end",
 };
 
@@ -199,19 +199,19 @@ describe("Dialog Component", () => {
 
 		const dialog = cy.getByTestId("dialog");
 		dialog.should("be.visible");
-		dialog.haveCSS({ ...defaultDialogStyles(), margin: `${remToPx(0.25)}px 0px 0px` });
+		dialog.haveCSS({ ...defaultDialogStyles(), margin: `${remToPx(0.25)} 0px 0px` });
 
 		const dialogHeader = cy.getByTestId("dialog-header");
 		dialogHeader.should("be.visible");
-		dialogHeader.haveCSS({ ...dialogHeaderStyles, margin: `${remToPx(0.25)}px 0px 0px` });
+		dialogHeader.haveCSS({ ...dialogHeaderStyles, margin: `${remToPx(0.25)} 0px 0px` });
 
 		const dialogBody = cy.getByTestId("dialog-body");
 		dialogBody.should("be.visible");
-		dialogBody.haveCSS({ ...dialogBodyStyles, margin: `${remToPx(0.25)}px 0px 0px` });
+		dialogBody.haveCSS({ ...dialogBodyStyles, margin: `${remToPx(0.25)} 0px 0px` });
 
 		const dialogAction = cy.getByTestId("dialog-action");
 		dialogAction.should("be.visible");
-		dialogAction.haveCSS({ margin: `${remToPx(0.25)}px 0px 0px` });
+		dialogAction.haveCSS({ margin: `${remToPx(0.25)} 0px 0px` });
 	});
 
 	// Boyut propları ile Dialog render'i
@@ -220,31 +220,31 @@ describe("Dialog Component", () => {
 		cy.wait(500);
 		const dialogSm = cy.getByTestId("dialog");
 		dialogSm.should("be.visible");
-		dialogSm.haveCSS({ ...defaultDialogStyles(), maxWidth: `${remToPx(24)}px` });
+		dialogSm.haveCSS({ ...defaultDialogStyles(), maxWidth: remToPx(24) });
 
 		setup({ id: "test-dialog", isOpen: true, size: "md" });
 		cy.wait(500);
 		const dialogMd = cy.getByTestId("dialog");
 		dialogMd.should("be.visible");
-		dialogMd.haveCSS({ ...defaultDialogStyles(), maxWidth: `${remToPx(28)}px` });
+		dialogMd.haveCSS({ ...defaultDialogStyles(), maxWidth: remToPx(28) });
 
 		setup({ id: "test-dialog", isOpen: true, size: "lg" });
 		cy.wait(500);
 		const dialogLg = cy.getByTestId("dialog");
 		dialogLg.should("be.visible");
-		dialogLg.haveCSS({ ...defaultDialogStyles(), maxWidth: `${remToPx(32)}px` });
+		dialogLg.haveCSS({ ...defaultDialogStyles(), maxWidth: remToPx(32) });
 
 		setup({ id: "test-dialog", isOpen: true, size: "xl" });
 		cy.wait(500);
 		const dialogXl = cy.getByTestId("dialog");
 		dialogXl.should("be.visible");
-		dialogXl.haveCSS({ ...defaultDialogStyles(), maxWidth: `${remToPx(36)}px` });
+		dialogXl.haveCSS({ ...defaultDialogStyles(), maxWidth: remToPx(36) });
 
 		setup({ id: "test-dialog", isOpen: true, size: "2xl" });
 		cy.wait(500);
 		const dialog2Xl = cy.getByTestId("dialog");
 		dialog2Xl.should("be.visible");
-		dialog2Xl.haveCSS({ ...defaultDialogStyles(), maxWidth: `${remToPx(42)}px` });
+		dialog2Xl.haveCSS({ ...defaultDialogStyles(), maxWidth: remToPx(42) });
 	});
 
 	// closeToClickOutside prop kontrolu

@@ -1,3 +1,4 @@
+import { languageConfigs } from "#/cypress/fixtures/stories/LanguageTranslations";
 import { LanguageChanger } from "@/components/navbar/LanguageChanger";
 import type { ILanguageData } from "@/interfaces/stores/ILanguageStore";
 import { useLanguageStore } from "@/stores/LanguageStore";
@@ -24,7 +25,7 @@ const englishFlag = "./cypress/fixtures/flags/united-kingdom-flag-icon.png";
 describe("LanguageChanger", () => {
 	context("Rendering", () => {
 		it("renders correctly with selected language", () => {
-			setup(languages, selectedLanguage);
+			setup(languages, languageConfigs[1]);
 
 			cy.getByTestId("language-changer").should("be.visible");
 			cy.contains("English").should("be.visible");

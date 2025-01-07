@@ -1,4 +1,4 @@
-import type { IRadioBox } from "@/interfaces/components/form/inputs/IRadioBox.ts";
+import type { IRadioBox } from "@/interfaces/components/inputs/IRadioBox";
 import type { ISize } from "@/interfaces/types/IMetrics.ts";
 import classNames from "classnames";
 import type { JSX } from "react";

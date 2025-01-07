@@ -26,7 +26,7 @@ describe("SidebarItem", () => {
 			sidebarItemContainer.should("be.visible").haveCSS({
 				display: "flex",
 				alignItems: "center",
-				gap: `${remToPx(0.5)}px`,
+				gap: remToPx(0.5),
 			});
 		});
 	});
@@ -86,11 +86,11 @@ describe("SidebarItem", () => {
 				.and("have.class", "hover:text-sidebar-item-active-color", "data-[activated='false']:hover:bg-sidebar-item-hover")
 				.haveCSS({
 					display: "flex",
-					borderRadius: `${remToPx(0.5)}px`,
+					borderRadius: remToPx(0.5),
 					alignItems: "center",
 					overflow: "hidden",
-					padding: `${remToPx(0.625)}px ${remToPx(0.5)}px`,
-					margin: `${remToPx(0.25)}px 0px ${remToPx(1)}px`,
+					padding: `${remToPx(0.625)} ${remToPx(0.5)}`,
+					margin: `${remToPx(0.25)} 0px ${remToPx(1)}`,
 					color: getCSSVariableValue(sidebar["item-color"]),
 				});
 		});
@@ -163,10 +163,10 @@ describe("SidebarItem", () => {
 				whiteSpace: "nowrap",
 				lineHeight: "20px",
 				opacity: "1",
-				marginLeft: `${remToPx(1)}px`,
+				marginLeft: remToPx(1),
 				transformOrigin: "0px 10px",
 				transform: "none",
-				margin: `0px 0px 0px ${remToPx(1)}px`,
+				margin: `0px 0px 0px ${remToPx(1)}`,
 			});
 		});
 

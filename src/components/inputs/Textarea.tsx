@@ -1,4 +1,4 @@
-import type { ITextarea } from "@/interfaces/components/form/inputs/ITextarea.ts";
+import type { ITextarea } from "@/interfaces/components/inputs/ITextarea";
 import classNames from "classnames";
 
 export const Textarea = ({ isInvalid = false, rows = 4, className = "", ...props }: ITextarea) => {

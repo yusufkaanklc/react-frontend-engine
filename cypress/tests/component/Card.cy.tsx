@@ -42,21 +42,21 @@ const stylesProps: Record<"card" | "cardHeader" | "cardBody" | "cardAction", ICu
 const defaultCardStyles: CSSProperties = {
 	display: "flex",
 	flexDirection: "column",
-	gap: `${remToPx(2)}px`,
-	padding: `${remToPx(1.25)}px`,
+	gap: remToPx(2),
+	padding: remToPx(1.25),
 	backgroundColor: getCSSVariableValue(paper.card),
 	border: `1px solid ${getCSSVariableValue(custom["card-border"])}`,
-	borderRadius: `${remToPx(0.5)}px`,
-	width: `${remToPx(20)}px`,
+	borderRadius: remToPx(0.5),
+	width: remToPx(20),
 };
 
 const defaultCardHeaderStyles: CSSProperties = {
-	fontSize: `${remToPx(1.25)}px`,
+	fontSize: remToPx(1.25),
 	color: getCSSVariableValue(color.primary),
 };
 
 const defaultCardBodyStyles: CSSProperties = {
-	fontSize: `${remToPx(0.875)}px`,
+	fontSize: remToPx(0.875),
 	color: getCSSVariableValue(color.primary),
 };
 
@@ -64,7 +64,7 @@ const defaultCardActionStyles: CSSProperties = {
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "flex-end",
-	gap: `${remToPx(1)}px`,
+	gap: remToPx(1),
 };
 
 describe("Card Component and sub components", () => {
@@ -105,9 +105,9 @@ describe("Card Component and sub components", () => {
 			sm: remToPx(16),
 			md: remToPx(20),
 			lg: remToPx(24),
-			xl: remToPx(28),
-			"2xl": remToPx(32),
-			full: window.innerWidth,
+			xl: remToPx(40),
+			"2xl": remToPx(56),
+			full: `${window.innerWidth}px`,
 		};
 
 		// biome-ignore lint/complexity/noForEach: <explanation>
@@ -117,7 +117,7 @@ describe("Card Component and sub components", () => {
 			const card = cy.getByTestId("card");
 
 			card.haveCSS({
-				width: `${expectedWidth}px`,
+				width: expectedWidth,
 			});
 		});
 	});
@@ -134,21 +134,21 @@ describe("Card Component and sub components", () => {
 
 		card.haveCSS({
 			...defaultCardStyles,
-			marginTop: `${remToPx(0.25)}px`,
+			marginTop: remToPx(0.25),
 		});
 
 		cardHeader.haveCSS({
 			...defaultCardHeaderStyles,
-			marginTop: `${remToPx(0.25)}px`,
+			marginTop: remToPx(0.25),
 		});
 
 		cardBody.haveCSS({
 			...defaultCardBodyStyles,
-			marginTop: `${remToPx(0.25)}px`,
+			marginTop: remToPx(0.25),
 		});
 
 		cardAction.haveCSS({
-			marginTop: `${remToPx(0.25)}px`,
+			marginTop: remToPx(0.25),
 		});
 	});
 });

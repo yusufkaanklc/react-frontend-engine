@@ -51,8 +51,8 @@ describe("Sidebar", () => {
 			height: `${innerHeight}px`,
 			display: "flex",
 			flexDirection: "column",
-			gap: `${remToPx(2.5)}px`,
-			padding: `${remToPx(1.5)}px 0px`,
+			gap: remToPx(2.5),
+			padding: `${remToPx(1.5)} 0px`,
 			overflow: "hidden",
 			borderColor: getCSSVariableValue(custom["card-border"]),
 			backgroundColor: getCSSVariableValue(sidebar.default),
@@ -74,8 +74,8 @@ describe("Sidebar", () => {
 			cy.getByTestId("sidebar-collapsed-trigger")
 				.should("be.visible")
 				.haveCSS({
-					width: `${remToPx(1.25)}px`,
-					height: `${remToPx(1.25)}px`,
+					width: remToPx(1.25),
+					height: remToPx(1.25),
 					cursor: "pointer",
 					color: getCSSVariableValue(sidebar["item-active-color"]),
 				});
@@ -102,6 +102,6 @@ describe("Sidebar", () => {
 	it("should render correctly sidebar menu list", () => {
 		cy.getByTestId("sidebar-menu-list")
 			.should("be.visible")
-			.haveCSS({ overflowX: "hidden", overflowY: "auto", padding: `0px ${remToPx(1)}px` });
+			.haveCSS({ overflowX: "hidden", overflowY: "auto", padding: `0px ${remToPx(1)}` });
 	});
 });

@@ -28,6 +28,7 @@ export { IconBox } from "@/components/IconBox";
 export { Checkbox } from "@/components/inputs/Checkbox";
 export { Dropzone } from "@/components/inputs/Dropzone";
 export { Input } from "@/components/inputs/Input";
+export { QuantityInput } from "@/components/inputs/QuantityInput";
 export { Radiobox } from "@/components/inputs/Radiobox";
 export { Select } from "@/components/inputs/Select";
 export { Textarea } from "@/components/inputs/Textarea";
@@ -85,4 +86,3 @@ export { useTranslation } from "react-i18next";
 export { Navigate, Outlet, type LoaderFunction } from "react-router-dom";
 export { z as zod } from "zod";
 export { create } from "zustand";
-

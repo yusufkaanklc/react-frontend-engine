@@ -28,8 +28,8 @@ describe("Pill Component", () => {
 			// Küçük boyut testi
 			setup({ size: "sm" });
 			cy.getByTestId("pill").haveCSS({
-				padding: `${remToPx(0.125)}px ${remToPx(0.5)}px`,
-				fontSize: `${remToPx(0.75)}px`,
+				padding: `${remToPx(0.125)} ${remToPx(0.5)}`,
+				fontSize: `${remToPx(0.75)}`,
 			});
 		});
 
@@ -37,8 +37,8 @@ describe("Pill Component", () => {
 			// Orta boyut testi (varsayılan)
 			setup({});
 			cy.getByTestId("pill").haveCSS({
-				padding: `${remToPx(0.25)}px ${remToPx(0.75)}px`,
-				fontSize: `${remToPx(0.875)}px`,
+				padding: `${remToPx(0.25)} ${remToPx(0.75)}`,
+				fontSize: `${remToPx(0.875)}`,
 			});
 		});
 
@@ -46,8 +46,8 @@ describe("Pill Component", () => {
 			// Büyük boyut testi
 			setup({ size: "lg" });
 			cy.getByTestId("pill").haveCSS({
-				padding: `${remToPx(0.375)}px ${remToPx(1)}px`,
-				fontSize: `${remToPx(0.875)}px`,
+				padding: `${remToPx(0.375)} ${remToPx(1)}`,
+				fontSize: `${remToPx(0.875)}`,
 			});
 		});
 	});
