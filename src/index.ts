@@ -37,6 +37,7 @@ export { DefaultLayout } from "@/components/layouts/DefaultLayout";
 export { SplitLayout } from "@/components/layouts/SplitLayout";
 export { Navbar } from "@/components/navbar/Navbar";
 export { Pill } from "@/components/Pill";
+export { ProgressBar } from "@/components/ProgressBar";
 export { Sidebar } from "@/components/sidebar/Sidebar";
 export { Tab } from "@/components/Tab";
 export { Table } from "@/components/Table";

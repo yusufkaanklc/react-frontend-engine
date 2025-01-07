@@ -1,5 +1,4 @@
 export const action = {
-	disable: "var(--action-disable)",
 	active: "var(--action-active)",
 	hover: "var(--action-hover)",
 	"extra-light-opacity": "var(--action-extra-light-opacity)",
