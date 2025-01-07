@@ -49,7 +49,7 @@ describe("FormCreator Component", () => {
 		formBody.haveCSS({
 			display: "flex",
 			flexDirection: "column",
-			gap: `${remToPx(1.25)}px`, // Rem değerini px'e çevirerek doğru gap hesaplaması sağlıyoruz
+			gap: remToPx(1.25),
 		});
 
 		// "combined-field" elemanının doğru şekilde render edildiğini kontrol ediyoruz

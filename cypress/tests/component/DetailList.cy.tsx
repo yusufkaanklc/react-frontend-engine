@@ -21,9 +21,9 @@ describe("DetailList Component", () => {
 
 		it("should render container with default styles", () => {
 			const containerStyles: CSSProperties = {
-				borderRadius: `${remToPx(0.5)}px`,
-				paddingTop: `${remToPx(0.75)}px`,
-				paddingBottom: `${remToPx(0.75)}px`,
+				borderRadius: remToPx(0.5),
+				paddingTop: remToPx(0.75),
+				paddingBottom: remToPx(0.75),
 				borderWidth: "1px",
 				borderStyle: "solid",
 			};

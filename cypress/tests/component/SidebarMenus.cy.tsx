@@ -64,7 +64,7 @@ describe("SidebarMenus", () => {
 				.should("be.visible")
 				.and("have.class", "group")
 				.haveCSS({
-					marginBottom: `${remToPx(1)}px`,
+					marginBottom: remToPx(1),
 				});
 		});
 
@@ -82,10 +82,10 @@ describe("SidebarMenus", () => {
 					display: "flex",
 					cursor: "pointer",
 					alignItems: "center",
-					borderRadius: `${remToPx(0.5)}px`,
+					borderRadius: remToPx(0.5),
 					justifyContent: "space-between",
-					padding: `${remToPx(0.625)}px ${remToPx(0.5)}px`,
-					margin: `${remToPx(0.25)}px 0px`,
+					padding: `${remToPx(0.625)} ${remToPx(0.5)}`,
+					margin: `${remToPx(0.25)} 0px`,
 					color: getCSSVariableValue(sidebar["item-color"]),
 				});
 		});
@@ -113,7 +113,7 @@ describe("SidebarMenus", () => {
 					textOverflow: "ellipsis",
 					lineHeight: "20px",
 					opacity: "1",
-					marginLeft: `${remToPx(1)}px`,
+					marginLeft: remToPx(1),
 				});
 		});
 
@@ -125,8 +125,8 @@ describe("SidebarMenus", () => {
 				.and("have.class", "transform", "data-[sidebar-collapsed='false']:group-open:-rotate-180")
 				.haveCSS({
 					flexShrink: "0",
-					width: `${remToPx(1)}px`,
-					height: `${remToPx(1)}px`,
+					width: remToPx(1),
+					height: remToPx(1),
 				});
 		});
 
@@ -136,8 +136,8 @@ describe("SidebarMenus", () => {
 				.should("be.visible")
 				.and("have.class", "text-sidebar-item-color")
 				.haveCSS({
-					marginTop: `${remToPx(0.5)}px`,
-					padding: `0px 0px 0px ${remToPx(0.79)}px`,
+					marginTop: remToPx(0.5),
+					padding: `0px 0px 0px ${remToPx(0.79)}`,
 					color: getCSSVariableValue(sidebar["item-color"]),
 				});
 		});

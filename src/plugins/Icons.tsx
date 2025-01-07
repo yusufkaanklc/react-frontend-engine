@@ -17,14 +17,18 @@ import {
 	HomeIcon,
 	MagnifyingGlassIcon,
 	MinusCircleIcon,
+	MinusIcon,
 	MoonIcon,
 	PlusCircleIcon,
+	PlusIcon,
 	SunIcon,
 	XMarkIcon,
 } from "@heroicons/react/24/outline";
 
 export const icons = {
 	outline: {
+		minus: <MinusIcon />,
+		plus: <PlusIcon />,
 		upload: <ArrowUpTrayIcon />,
 		chevron_right: <ChevronRightIcon />,
 		bell: <BellIcon />,

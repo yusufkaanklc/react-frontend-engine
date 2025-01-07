@@ -11,9 +11,9 @@ describe("Avatar", () => {
 
 		cy.getByTestId("avatar").haveCSS({
 			overflow: "hidden",
-			width: `${remToPx(3)}px`,
+			width: remToPx(3),
 			borderRadius: "9999px",
-			height: `${remToPx(3)}px`,
+			height: remToPx(3),
 		});
 	});
 
@@ -23,9 +23,9 @@ describe("Avatar", () => {
 
 		cy.getByTestId("avatar").haveCSS({
 			overflow: "hidden",
-			width: `${remToPx(4)}px`,
+			width: remToPx(4),
 			borderRadius: "9999px",
-			height: `${remToPx(4)}px`,
+			height: remToPx(4),
 		});
 	});
 
@@ -33,7 +33,7 @@ describe("Avatar", () => {
 	it("renders the avatar with custom rounded", () => {
 		cy.mount(<Avatar image="https://via.placeholder.com/150" alt="test" rounded="sm" />);
 
-		cy.getByTestId("avatar").haveCSS({ borderRadius: `${remToPx(0.25)}px` });
+		cy.getByTestId("avatar").haveCSS({ borderRadius: remToPx(0.25) });
 	});
 
 	// Özel className ile avatar'ın doğru şekilde render edildiğini test eder

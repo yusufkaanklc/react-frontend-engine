@@ -55,7 +55,7 @@ describe("Default Layout Component", () => {
 			.should("be.visible")
 			.haveCSS({
 				height: `${innerHeight}px`, // Yükseklik
-				overflow: "auto", // Taşma
+				overflow: "hidden auto", // Taşma
 				display: "flex", // Flex düzeni
 			});
 
@@ -77,7 +77,7 @@ describe("Default Layout Component", () => {
 				zIndex: "60", // Z-index
 				height: `${innerHeight}px`, // Yükseklik
 				transform: "matrix(1, 0, 0, 1, 0, 0)", // Transform
-				width: `${remToPx(4.5)}px`, // Genişlik
+				width: remToPx(4.5), // Genişlik
 			});
 
 		cy.getByTestId("mock-sidebar").should("be.visible");
@@ -117,7 +117,7 @@ describe("Default Layout Component", () => {
 				zIndex: "60",
 				height: `${innerHeight}px`,
 				transform: "matrix(1, 0, 0, 1, 0, 0)",
-				width: `${remToPx(18)}px`, // Genişlik
+				width: remToPx(18), // Genişlik
 			});
 
 		cy.getByTestId("mock-sidebar").should("be.visible");
@@ -149,9 +149,7 @@ describe("Default Layout Component", () => {
 		cy.getByTestId("navbar-content-section")
 			.should("have.attr", "data-sidebar-collapsed", "true")
 			.haveCSS({
-				margin: `0px 0px 0px ${remToPx(4.5)}px`, // Marjin
-				overflowX: "hidden",
-				overflowY: "auto",
+				margin: `0px 0px 0px ${remToPx(4.5)}`, // Marjin
 				display: "flex",
 				flexDirection: "column", // Flex yönü
 			});
@@ -162,8 +160,6 @@ describe("Default Layout Component", () => {
 		setup(true);
 		cy.getByTestId("navbar-content-section").should("have.attr", "data-sidebar-collapsed", "true").haveCSS({
 			margin: "0px",
-			overflowX: "hidden",
-			overflowY: "auto",
 			display: "flex",
 			flexDirection: "column",
 		});
@@ -175,9 +171,7 @@ describe("Default Layout Component", () => {
 		cy.getByTestId("navbar-content-section")
 			.should("have.attr", "data-sidebar-collapsed", "false")
 			.haveCSS({
-				margin: `0px 0px 0px ${remToPx(18)}px`,
-				overflowX: "hidden",
-				overflowY: "auto",
+				margin: `0px 0px 0px ${remToPx(18)}`,
 				display: "flex",
 				flexDirection: "column",
 			});
@@ -188,8 +182,6 @@ describe("Default Layout Component", () => {
 		setup(false);
 		cy.getByTestId("navbar-content-section").should("have.attr", "data-sidebar-collapsed", "false").haveCSS({
 			margin: "0px",
-			overflowX: "hidden",
-			overflowY: "auto",
 			display: "flex",
 			flexDirection: "column",
 		});
@@ -203,10 +195,10 @@ describe("Default Layout Component", () => {
 			.haveCSS({
 				position: "fixed",
 				top: "0px",
-				left: `${remToPx(4.5)}px`, // Sağda ve solda mesafe
+				left: remToPx(4.5), // Sağda ve solda mesafe
 				zIndex: "50",
 				right: "0px",
-				height: `${remToPx(4.5)}px`,
+				height: remToPx(4.5),
 			});
 	});
 
@@ -221,7 +213,7 @@ describe("Default Layout Component", () => {
 				left: "0px",
 				zIndex: "50",
 				right: "0px",
-				height: `${remToPx(4.5)}px`,
+				height: remToPx(4.5),
 			});
 	});
 
@@ -233,10 +225,10 @@ describe("Default Layout Component", () => {
 			.haveCSS({
 				position: "fixed",
 				top: "0px",
-				left: `${remToPx(18)}px`, // Sol mesafe
+				left: remToPx(18), // Sol mesafe
 				zIndex: "50",
 				right: "0px",
-				height: `${remToPx(4.5)}px`,
+				height: remToPx(4.5),
 			});
 	});
 
@@ -251,7 +243,7 @@ describe("Default Layout Component", () => {
 				left: "0px",
 				zIndex: "50",
 				right: "0px",
-				height: `${remToPx(4.5)}px`,
+				height: remToPx(4.5),
 			});
 	});
 
@@ -261,8 +253,8 @@ describe("Default Layout Component", () => {
 		cy.getByTestId("content-section")
 			.should("be.visible")
 			.haveCSS({
-				margin: `${remToPx(6.5)}px 0px 0px`,
-				padding: `0px ${remToPx(3.5)}px ${remToPx(2.5)}px`, // Padding ayarları
+				margin: `${remToPx(6.5)} 0px 0px`,
+				padding: `0px ${remToPx(3.5)} ${remToPx(2.5)}`, // Padding ayarları
 			});
 
 		cy.getByTestId("mock-test-route").should("be.visible");
@@ -274,8 +266,8 @@ describe("Default Layout Component", () => {
 		cy.getByTestId("content-section")
 			.should("be.visible")
 			.haveCSS({
-				margin: `${remToPx(6.5)}px 0px 0px`,
-				padding: `0px ${remToPx(1)}px ${remToPx(2.5)}px`, // Padding ayarları
+				margin: `${remToPx(6.5)} 0px 0px`,
+				padding: `0px ${remToPx(1)} ${remToPx(2.5)}`, // Padding ayarları
 			});
 
 		cy.getByTestId("mock-test-route").should("be.visible");

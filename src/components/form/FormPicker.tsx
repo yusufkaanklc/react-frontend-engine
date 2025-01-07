@@ -1,6 +1,7 @@
 import { Checkbox } from "@/components/inputs/Checkbox";
 import { Dropzone } from "@/components/inputs/Dropzone";
 import { Input } from "@/components/inputs/Input";
+import { QuantityInput } from "@/components/inputs/QuantityInput";
 import { Radiobox } from "@/components/inputs/Radiobox";
 import { Select } from "@/components/inputs/Select";
 import { Textarea } from "@/components/inputs/Textarea";
@@ -43,6 +44,10 @@ export const FormPicker = ({ field, control, isInvalid }: IInputPicker) => {
 						{...dropzoneSettings}
 					/>
 				);
+
+			case "quantity":
+				return <QuantityInput {...restField} {...control} />;
+
 			default:
 				return null;
 		}

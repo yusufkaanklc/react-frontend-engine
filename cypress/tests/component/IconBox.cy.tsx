@@ -20,12 +20,12 @@ describe("IconBox Bileşeni", () => {
 			alignItems: "center",
 			justifyContent: "center",
 			cursor: "pointer",
-			borderRadius: `${remToPx(0.5)}px`,
+			borderRadius: remToPx(0.5),
 			color: getCSSVariableValue(color.primary),
 		});
 
 		cy.getByTestId("icon-box-child")
-			.haveCSS({ width: `${remToPx(1.5)}px`, height: `${remToPx(1.5)}px` })
+			.haveCSS({ width: remToPx(1.5), height: remToPx(1.5) })
 			.find("svg")
 			.should("be.visible");
 	});
@@ -41,13 +41,13 @@ describe("IconBox Bileşeni", () => {
 	// Boyut özelliğine göre stil kontrolü
 	it("boyut özelliğine göre doğru stilleri göstermelidir", () => {
 		setup({ size: "lg" });
-		cy.getByTestId("icon-box-child").haveCSS({ width: `${remToPx(2.5)}px`, height: `${remToPx(2.5)}px` });
+		cy.getByTestId("icon-box-child").haveCSS({ width: remToPx(2.5), height: remToPx(2.5) });
 	});
 
 	// Köşe yuvarlaklığı özelliğine göre stil kontrolü
 	it("köşe yuvarlaklığı özelliğine göre doğru stilleri göstermelidir", () => {
 		setup({ radius: "xl" });
-		cy.getByTestId("icon-box").haveCSS({ borderRadius: `${remToPx(0.75)}px` });
+		cy.getByTestId("icon-box").haveCSS({ borderRadius: remToPx(0.75) });
 	});
 
 	// Özel CSS sınıfı özelliğine göre stil kontrolü
@@ -59,6 +59,6 @@ describe("IconBox Bileşeni", () => {
 	// Hover durumu özelliğine göre stil kontrolü
 	it("hover durumu özelliğine göre doğru stilleri göstermelidir", () => {
 		setup({ isHoverable: true });
-		cy.getByTestId("icon-box").haveCSS({ transform: "matrix(1, 0, 0, 1, 0, 0)", padding: `${remToPx(0.5)}px` });
+		cy.getByTestId("icon-box").haveCSS({ transform: "matrix(1, 0, 0, 1, 0, 0)", padding: remToPx(0.5) });
 	});
 });

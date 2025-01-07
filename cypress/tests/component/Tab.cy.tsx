@@ -27,7 +27,7 @@ describe("Tab Component", () => {
 				display: "flex",
 				overflowY: "hidden",
 				overflowX: "auto",
-				gap: `${remToPx(1.5)}px`,
+				gap: remToPx(1.5),
 				flexDirection: "row",
 			});
 
@@ -37,10 +37,10 @@ describe("Tab Component", () => {
 			.each((item, index) => {
 				const commonStyles = {
 					flexShrink: "0",
-					borderRadius: `${remToPx(0.5)}px`,
+					borderRadius: remToPx(0.5),
 					cursor: "pointer",
-					padding: `${remToPx(0.5)}px ${remToPx(1)}px`,
-					fontSize: `${remToPx(0.875)}px`,
+					padding: `${remToPx(0.5)} ${remToPx(1)}`,
+					fontSize: remToPx(0.875),
 				};
 				cy.wrap(item)
 					.and("have.text", `${tabs[index].label} `)
@@ -70,7 +70,7 @@ describe("Tab Component", () => {
 			.should("be.visible")
 			.haveCSS({
 				flexDirection: "column",
-				gap: `${remToPx(0.75)}px`,
+				gap: remToPx(0.75),
 			});
 	});
 
@@ -79,36 +79,36 @@ describe("Tab Component", () => {
 		setup({ tabs, selectedTab: tabs[0].value, size: "sm" });
 
 		cy.getByTestId("tab-item").haveCSS({
-			padding: `${remToPx(0.25)}px ${remToPx(0.5)}px`,
-			fontSize: `${remToPx(0.75)}px`,
+			padding: `${remToPx(0.25)} ${remToPx(0.5)}`,
+			fontSize: remToPx(0.75),
 		});
 
 		setup({ tabs, selectedTab: tabs[0].value, size: "md" });
 
 		cy.getByTestId("tab-item").haveCSS({
-			padding: `${remToPx(0.5)}px ${remToPx(1)}px`,
-			fontSize: `${remToPx(0.875)}px`,
+			padding: `${remToPx(0.5)} ${remToPx(1)}`,
+			fontSize: remToPx(0.875),
 		});
 
 		setup({ tabs, selectedTab: tabs[0].value, size: "lg" });
 
 		cy.getByTestId("tab-item").haveCSS({
-			padding: `${remToPx(0.75)}px ${remToPx(1.5)}px`,
-			fontSize: `${remToPx(0.875)}px`,
+			padding: `${remToPx(0.75)} ${remToPx(1.5)}`,
+			fontSize: remToPx(0.875),
 		});
 
 		setup({ tabs, selectedTab: tabs[0].value, size: "xl" });
 
 		cy.getByTestId("tab-item").haveCSS({
-			padding: `${remToPx(1)}px ${remToPx(2)}px`,
-			fontSize: `${remToPx(1)}px`,
+			padding: `${remToPx(1)} ${remToPx(2)}`,
+			fontSize: remToPx(1),
 		});
 
 		setup({ tabs, selectedTab: tabs[0].value, size: "2xl" });
 
 		cy.getByTestId("tab-item").haveCSS({
-			padding: `${remToPx(1.25)}px ${remToPx(2.5)}px`,
-			fontSize: `${remToPx(1)}px`,
+			padding: `${remToPx(1.25)} ${remToPx(2.5)}`,
+			fontSize: remToPx(1),
 		});
 	});
 

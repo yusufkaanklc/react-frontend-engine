@@ -1,5 +1,5 @@
 import { IconBox } from "@/components/IconBox";
-import type { IDropzone } from "@/interfaces/components/form/inputs/IDropzone";
+import type { IDropzone } from "@/interfaces/components/inputs/IDropzone";
 import { icons } from "@/plugins/Icons";
 import { sizeToMB } from "@/utils/SizeToMB";
 import classNames from "classnames";
