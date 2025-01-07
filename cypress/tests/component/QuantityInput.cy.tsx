@@ -22,7 +22,7 @@ describe("QuantityInput Component", () => {
 			cy.getByTestId("quantity-input-container").haveCSS({
 				display: "inline-flex",
 				alignItems: "center",
-				borderRadius: remToPx(0.25),
+				borderRadius: remToPx(0.5),
 			});
 		});
 

@@ -1,5 +1,5 @@
-import type { ISizeSchema } from "@/components/inputs/Toggle";
 import type { ITab } from "@/interfaces/components/ITab";
+import type { ISizeSchema } from "@/interfaces/types/IMetrics";
 import { keyboardUtil } from "@/utils/KeyboardUtil";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
