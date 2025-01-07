@@ -1,9 +1,7 @@
 import type { IRadioBox } from "@/interfaces/components/inputs/IRadioBox";
-import type { ISize } from "@/interfaces/types/IMetrics.ts";
+import type { ISizeSchema } from "@/interfaces/types/IMetrics";
 import classNames from "classnames";
 import { type JSX, useEffect, useState } from "react";
-
-export type ISizeSchema = Record<ISize, string>;
 
 /**
  * `Toggle` componenti, özelleştirilebilir bir anahtar (toggle) düğmesi sağlar.

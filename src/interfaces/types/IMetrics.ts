@@ -4,3 +4,4 @@ export type IPosition = "bottom" | "top" | "left" | "right" | "top-left" | "top-
 export type IColorVariants = "primary" | "secondary" | "error" | "warning" | "info" | "success";
 export type IStatus = "success" | "info" | "warning" | "error";
 export type IHTTPMethod = "GET" | "POST" | "PUT" | "DELETE";
+export type ISizeSchema = Record<ISize, string>;

@@ -1,6 +1,6 @@
 import { IconBox } from "@/components/IconBox";
-import type { ISizeSchema } from "@/components/inputs/Toggle";
 import type { IInput } from "@/interfaces/components/inputs/IInput";
+import type { ISizeSchema } from "@/interfaces/types/IMetrics";
 import { icons } from "@/plugins/Icons.tsx";
 import classNames from "classnames";
 import { type FC, useState } from "react";

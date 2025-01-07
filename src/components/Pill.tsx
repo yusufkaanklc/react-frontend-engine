@@ -1,5 +1,5 @@
-import type { ISizeSchema } from "@/components/inputs/Toggle";
 import type { IPill } from "@/interfaces/components/IPill";
+import type { ISizeSchema } from "@/interfaces/types/IMetrics";
 import classNames from "classnames";
 
 export const Pill = ({ colorScheme = "primary", size = "md", className = "", children, ...props }: IPill) => {
