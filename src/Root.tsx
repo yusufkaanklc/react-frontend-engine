@@ -1,3 +1,4 @@
+import { Announcement } from "@/components/Announcement";
 import type { IRoot } from "@/interfaces/IRoot.ts";
 import type { ICustomHandle } from "@/interfaces/plugins/ICustomRouteObject";
 import { initI18n } from "@/plugins/I18N";
@@ -6,13 +7,15 @@ import { useThemeStore } from "@/stores/ThemeStore.ts";
 import { useUIStore } from "@/stores/UIStore.ts";
 import { promiseRejectionErrorHandler } from "@/utils/PromiseRejectionErrorHandler.ts";
 import type { RouterState } from "@remix-run/router";
+import classNames from "classnames";
+import { isEmpty } from "lodash";
 import { type JSX, useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { type RouteObject, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Tooltip } from "react-tooltip";
-import { emitter } from "./plugins/Mitt";
+import { pathCompare } from "./utils/PathCompare";
 
 /**
  * Uygulamanın kök bileşeni. Temalar, dil seçenekleri ve yönlendirme gibi
@@ -21,17 +24,30 @@ import { emitter } from "./plugins/Mitt";
  * @param {IRoot} - `routes` ve `languageTranslations` özelliklerini içeren yapılandırma nesnesi.
  * @returns {JSX.Element} - Root bileşeni.
  */
-export const Root = ({ routes, languageTranslations, configs }: IRoot): JSX.Element => {
+export const Root = ({ routes, configs }: IRoot): JSX.Element => {
 	const setRouter = useRouterStore((state) => state.setRouter);
 	const router = useRouterStore((state) => state.router);
 	const initTheme = useThemeStore((state) => state.initTheme);
 	const initSidebarCollapsedStatus = useUIStore((state) => state.initSidebarCollapsedStatus);
-	const pageTitlePrefix = configs.pageTitlePrefix;
 
+	const {
+		isTooltipEnabled = true,
+		isToastEnabled = true,
+		isCrumbActive = true,
+		pageTitlePrefix,
+		translations = [],
+		announcement = {
+			position: "top",
+			blacklist: [],
+			list: [],
+		},
+	} = configs;
+
+	// Uygulama başlatma işlemi
 	useEffect(() => {
 		const initializeLocalization = async () => {
-			if (!languageTranslations || languageTranslations.length === 0) return;
-			await initI18n(languageTranslations);
+			if (!translations || translations.length === 0) return;
+			await initI18n(translations);
 		};
 
 		initializeLocalization();
@@ -40,9 +56,10 @@ export const Root = ({ routes, languageTranslations, configs }: IRoot): JSX.Elem
 		 * Uygulama başlatma işlevi. Temalar, dil yapılandırması ve yönlendirmeyi başlatır.
 		 */
 		const initializeApp = async () => {
-			// Tema ve Sidebar durumlarını başlat
+			// Tema durumunu başlat
 			initTheme();
-			emitter;
+
+			// Sidebar durumunu başlat
 			initSidebarCollapsedStatus();
 
 			// Yeni Router'ı oluştur
@@ -51,7 +68,6 @@ export const Root = ({ routes, languageTranslations, configs }: IRoot): JSX.Elem
 					v7_relativeSplatPath: true,
 					v7_fetcherPersist: true,
 					v7_normalizeFormMethod: true,
-					v7_partialHydration: true,
 					v7_skipActionErrorRevalidation: true,
 				},
 			});
@@ -61,23 +77,11 @@ export const Root = ({ routes, languageTranslations, configs }: IRoot): JSX.Elem
 		};
 
 		initializeApp();
+	}, [routes, setRouter, initTheme, initSidebarCollapsedStatus, translations]);
 
-		// Promise hatalarını yönetmek için event dinleyicisi ekler
-		const handlePromiseRejections = (event: PromiseRejectionEvent) => {
-			promiseRejectionErrorHandler(event);
-		};
-
-		window.addEventListener("unhandledrejection", handlePromiseRejections);
-		window.addEventListener("rejectionhandled", handlePromiseRejections);
-
-		return () => {
-			window.removeEventListener("unhandledrejection", handlePromiseRejections);
-			window.removeEventListener("rejectionhandled", handlePromiseRejections);
-		};
-	}, [routes, setRouter, initTheme, initSidebarCollapsedStatus]);
-
+	// Sayfa başlığını güncelleme işlemi
 	useEffect(() => {
-		if (!router) return;
+		if (!router || !isCrumbActive) return;
 
 		// Crumb verisinden aktif sayfa başlığını al
 		const handlePageTitle = (routerState: RouterState) => {
@@ -102,13 +106,44 @@ export const Root = ({ routes, languageTranslations, configs }: IRoot): JSX.Elem
 		handlePageTitle(router.state);
 
 		router.subscribe((state) => handlePageTitle(state));
-	}, [router, pageTitlePrefix, languageTranslations]);
+	}, [router, pageTitlePrefix, translations, isCrumbActive]);
+
+	// Promise hatalarını yönetmek için event dinleyicisi ekler ve announcement ekleme işlemlerini yönetir
+	useEffect(() => {
+		// Promise hatalarını yönetmek için event dinleyicisi ekler
+		const handlePromiseRejections = (event: PromiseRejectionEvent) => {
+			promiseRejectionErrorHandler(event);
+		};
+
+		// Promise hatalarını yönetmek için event dinleyicisi ekler
+		window.addEventListener("unhandledrejection", handlePromiseRejections);
+		window.addEventListener("rejectionhandled", handlePromiseRejections);
+
+		return () => {
+			window.removeEventListener("unhandledrejection", handlePromiseRejections);
+			window.removeEventListener("rejectionhandled", handlePromiseRejections);
+		};
+	}, []);
 
 	return (
 		<ErrorBoundary fallback={<div>Bir hata oluştu</div>}>
-			{router ? <RouterProvider future={{ v7_startTransition: true }} router={router} /> : null}
-			<ToastContainer />
-			<Tooltip style={{ zIndex: 9999 }} positionStrategy="fixed" place="bottom" id="global-tooltip" />
+			<div
+				data-testid="announcement-container"
+				className={classNames("fixed z-[9999] left-0 right-0", {
+					"top-0": announcement.position === "top",
+					"bottom-0": announcement.position === "bottom",
+					hidden: pathCompare(announcement.blacklist || []) || announcement.list.length === 0,
+				})}
+			>
+				{typeof announcement === "object" &&
+					!isEmpty(announcement.list) &&
+					announcement.list.map((announcement) => <Announcement key={announcement.id} {...announcement} />)}
+			</div>
+			{router ? (
+				<RouterProvider future={{ v7_startTransition: true }} router={router} fallbackElement={<div>Yükleniyor...</div>} />
+			) : null}
+			{isToastEnabled && <ToastContainer />}
+			{isTooltipEnabled && <Tooltip style={{ zIndex: 9998 }} positionStrategy="fixed" place="bottom" id="global-tooltip" />}
 		</ErrorBoundary>
 	);
 };

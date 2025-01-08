@@ -18,50 +18,52 @@ export const DefaultLayout = ({ sidebar, navbar }: IDefaultLayout): JSX.Element 
 	const sidebarCollapsed = useUIStore((state) => state.sidebarCollapsed);
 
 	return (
-		<div data-testid={"default-layout"} className="h-auto min-h-screen overflow-y-auto overflow-x-hidden flex">
-			{/* Sidebar - Kenar Çubuğu */}
-			<div
-				data-testid={"sidebar-section"}
-				data-sidebar-collapsed={sidebarCollapsed.status}
-				className={classNames(
-					"fixed top-0 overflow-hidden left-0 z-60 h-full w-screen duration-300 transition-all",
-					"data-[sidebar-collapsed='true']:-translate-x-full",
-					"data-[sidebar-collapsed='true']:md:translate-x-0",
-					"data-[sidebar-collapsed='false']:md:translate-x-0",
-					"data-[sidebar-collapsed='true']:md:w-[4.5rem]",
-					"data-[sidebar-collapsed='false']:md:w-72",
-				)}
-			>
-				{sidebar}
-			</div>
-
-			{/* Ana İçerik */}
-			<div
-				data-testid={"navbar-content-section"}
-				data-sidebar-collapsed={sidebarCollapsed.status}
-				className={classNames(
-					"flex-1 ml-0 duration-300 transition-all flex flex-col",
-					"data-[sidebar-collapsed='false']:md:ml-72",
-					"data-[sidebar-collapsed='true']:md:ml-[4.5rem]",
-				)}
-			>
-				{/* Navbar - Üst Menü */}
+		<>
+			<div data-testid={"default-layout"} className="h-auto min-h-screen overflow-y-auto overflow-x-hidden flex">
+				{/* Sidebar - Kenar Çubuğu */}
 				<div
-					data-testid={"navbar-section"}
+					data-testid={"sidebar-section"}
 					data-sidebar-collapsed={sidebarCollapsed.status}
 					className={classNames(
-						"fixed top-0 left-0 z-50 duration-300 transition-all right-0 h-[4.5rem]",
-						"data-[sidebar-collapsed='false']:md:left-72",
-						"data-[sidebar-collapsed='true']:md:left-[4.5rem]",
+						"fixed top-0 overflow-hidden left-0 z-60 h-full w-screen duration-300 transition-all",
+						"data-[sidebar-collapsed='true']:-translate-x-full",
+						"data-[sidebar-collapsed='true']:md:translate-x-0",
+						"data-[sidebar-collapsed='false']:md:translate-x-0",
+						"data-[sidebar-collapsed='true']:md:w-[4.5rem]",
+						"data-[sidebar-collapsed='false']:md:w-72",
 					)}
 				>
-					{navbar}
+					{sidebar}
 				</div>
-				{/* İçerik Alanı */}
-				<div data-testid={"content-section"} className={"mt-[6.5rem] pb-10 px-4 lg:px-14"}>
-					<Outlet />
+
+				{/* Ana İçerik */}
+				<div
+					data-testid={"navbar-content-section"}
+					data-sidebar-collapsed={sidebarCollapsed.status}
+					className={classNames(
+						"flex-1 ml-0 duration-300 transition-all flex flex-col",
+						"data-[sidebar-collapsed='false']:md:ml-72",
+						"data-[sidebar-collapsed='true']:md:ml-[4.5rem]",
+					)}
+				>
+					{/* Navbar - Üst Menü */}
+					<div
+						data-testid={"navbar-section"}
+						data-sidebar-collapsed={sidebarCollapsed.status}
+						className={classNames(
+							"fixed top-0 left-0 z-50 duration-300 transition-all right-0 h-[4.5rem]",
+							"data-[sidebar-collapsed='false']:md:left-72",
+							"data-[sidebar-collapsed='true']:md:left-[4.5rem]",
+						)}
+					>
+						{navbar}
+					</div>
+					{/* İçerik Alanı */}
+					<div data-testid={"content-section"} className={"mt-[6.5rem] pb-10 px-4 lg:px-14"}>
+						<Outlet />
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };

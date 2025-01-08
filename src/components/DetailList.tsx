@@ -1,8 +1,7 @@
 import type { IDetailList, IDetailListStyleClass } from "@/interfaces/components/IDetailList";
 import { useThemeStore } from "@/stores/ThemeStore";
-import { isEmpty, isNull, isUndefined } from "@/utils/dataServices";
 import classNames from "classnames";
-import { get } from "lodash";
+import { get, isEmpty, isNull, isUndefined } from "lodash";
 
 export const DetailList = ({ data, options }: IDetailList) => {
 	const { striped, bordered, className, styleClass } = options || {};
