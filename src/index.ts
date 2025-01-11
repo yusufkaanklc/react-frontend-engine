@@ -3,6 +3,7 @@ export { Root } from "@/Root";
 import "./styles/theme.css"; // CSS dosyanızın yolu
 
 // Components
+export { Announcement } from "@/components/Announcement";
 export { Avatar } from "@/components/Avatar";
 export { Breadcrumb } from "@/components/Breadcrumb";
 export { Button } from "@/components/Button";
@@ -45,6 +46,7 @@ export { Table } from "@/components/Table";
 // Interfaces
 export type { IDropdownStyle } from "@/interfaces/components/dropdown/IDropdown";
 export type { IFormButton, IFormField, IFormFields } from "@/interfaces/components/form/IFormCreator.ts";
+export type { IAnnouncement } from "@/interfaces/components/IAnnouncement";
 export type { IDetailListData, IDetailListOptions } from "@/interfaces/components/IDetailList";
 export type { ITabItem } from "@/interfaces/components/ITab";
 export type { ITableCellRendererParams, ITableColumn, ITableOptions, ITableRow } from "@/interfaces/components/ITable";
@@ -58,6 +60,7 @@ export type { IRounded, ISize } from "@/interfaces/types/IMetrics.ts";
 // Utils
 export { redirectNative } from "@/actions/client/RedirectNative.ts";
 export { generateId } from "@/utils/GenerateId.ts";
+export { pathCompare } from "@/utils/PathCompare";
 export { shouldBypass } from "@/utils/ShouldBypass";
 
 // Plugins
@@ -84,6 +87,6 @@ export type { ResourceLanguage } from "i18next";
 export type { IFileError } from "react-dropzone-kit";
 export { Controller, useForm } from "react-hook-form";
 export { useTranslation } from "react-i18next";
-export { Navigate, Outlet, type LoaderFunction } from "react-router-dom";
+export { Navigate, Outlet, useLoaderData, type LoaderFunction } from "react-router-dom";
 export { z as zod } from "zod";
 export { create } from "zustand";

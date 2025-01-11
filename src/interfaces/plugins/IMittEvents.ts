@@ -9,5 +9,4 @@ export interface IMittEvents extends Record<EventType, unknown> {
 	"dialog.close": IDialogEvent;
 	"dialog.toggle": IDialogEvent;
 	"dialog.close.all": undefined;
-	[key: string]: unknown;
 }
